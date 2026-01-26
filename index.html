@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LENO AGENCY | Futuristic IT & Branding</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Syne:wght@700;800&display=swap');
+    </style>
+</head>
+<body class="bg-[#05010a] text-white overflow-x-hidden font-[Inter]">
+
+    <canvas id="canvas-bg" class="fixed inset-0 z-[-1] pointer-events-none"></canvas>
+    <div id="cursor" class="hidden md:block"></div>
+    <div id="cursor-blur" class="hidden md:block"></div>
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 p-2 glass rounded-full border border-purple-500/30" id="hud-nav">
+        <a href="#home" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400">Core</a>
+        <a href="#projects" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400">Masterpieces</a>
+        <a href="#pricing" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400">Tarifs</a>
+        <a href="#contact" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2">Sync Now</a>
+    </nav>
+
+    <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
+        
+        <h1 class="text-[12vw] font-black italic hero-glitch mb-4 font-[Syne]" data-text="LENO" data-aos="zoom-in">
+            LENO
+        </h1>
+        
+        <div class="flex items-center justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="300">
+            <span class="h-[1px] w-12 bg-purple-500"></span>
+            <p class="uppercase tracking-[1em] text-[10px] text-purple-400">Intelligence • Elegance • Evolution</p>
+            <span class="h-[1px] w-12 bg-purple-500"></span>
+        </div>
+        
+        <a href="#pricing" class="cta-purple px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 active:scale-95" data-aos="fade-up" data-aos-delay="500">
+            Initialise Protocol
+        </a>
+    </section>
+
+    <section id="projects" class="py-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto mb-16 flex justify-between items-end">
+            <div>
+                <h2 class="text-sm uppercase tracking-[0.4em] text-purple-500 mb-2">Data Registry</h2>
+                <h3 class="text-6xl font-black font-[Syne]">Masterpieces</h3>
+            </div>
+            <p class="text-gray-500 max-w-xs text-right hidden md:block italic text-sm">Translating complex logic into visual luxury.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-7xl mx-auto">
+            
+            <div class="md:col-span-8 group relative overflow-hidden rounded-[2.5rem] h-[500px] glass-card cursor-pointer" data-aos="fade-right">
+                <div class="scanner"></div>
+                <img src="https://images.unsplash.com/photo-1635332353571-94943f65625c?auto=format&fit=crop&q=80" alt="IT App" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#05010a] via-[#05010a]/20 to-transparent"></div>
+                <div class="absolute bottom-12 left-12 transition-all duration-500 group-hover:-translate-y-4">
+                    <span class="px-4 py-1 border border-purple-500 rounded-full text-[10px] uppercase tracking-widest text-purple-400 bg-purple-500/10">IT Solution_01</span>
+                    <h4 class="text-5xl font-black mt-4 font-[Syne]">NEO-CORE</h4>
+                    <p class="text-gray-400 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 max-w-md text-sm leading-relaxed">Advanced decentralized banking architecture featuring AI fraud mitigation and neural security layers.</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 group relative overflow-hidden rounded-[2.5rem] h-[500px] glass-card cursor-pointer" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80" alt="Logo Design" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-purple-900/40 group-hover:bg-purple-900/10 transition-colors"></div>
+                <div class="absolute bottom-12 left-10">
+                    <span class="px-4 py-1 border border-white/30 rounded-full text-[10px] uppercase tracking-widest">Visual_ID</span>
+                    <h4 class="text-3xl font-black mt-4 font-[Syne]">LUVIA LUXE</h4>
+                    <p class="text-gray-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-xs">Premium identity systems and 3D cartoon avatars for high-end commerce.</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-12 group relative overflow-hidden rounded-[2.5rem] h-[350px] glass-card cursor-pointer" data-aos="fade-up">
+                <div class="absolute inset-0 bg-[#1a0b2e] flex flex-col md:flex-row items-center justify-around px-12">
+                    <div class="text-center md:text-left">
+                        <h5 class="text-[10rem] font-black text-white/5 absolute left-10 top-0 pointer-events-none">VIRAL</h5>
+                        <h4 class="text-4xl font-black font-[Syne] relative z-10">Digital Explosion</h4>
+                        <p class="text-purple-400 font-bold mt-2 tracking-widest uppercase text-xs">+400% GROWTH REGISTERED</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl max-w-sm border border-white/10 hidden md:block">
+                        <p class="text-sm italic text-gray-400 font-light leading-relaxed">"The animated characters and Reels strategy provided by Leno Agency didn't just market our product—it started a cultural shift."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-center text-[10px] uppercase tracking-[0.5em] text-purple-500 mb-4">Investment Modules</h2>
+        <h3 class="text-5xl font-black text-center mb-16 font-[Syne]">Acquisition Tarifs</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="tarif-card" data-aos="fade-up">
+                <h3 class="font-bold uppercase tracking-tighter">Ekonom</h3>
+                <div class="price">$299</div>
+                <ul class="text-xs space-y-3">
+                    <li>2 creative assets</li>
+                    <li>1 shooting day</li>
+                    <li>4 Reels / 8 Posts</li>
+                    <li>15 stories</li>
+                </ul>
+                <button class="buy-btn mt-6">Initialize</button>
+            </div>
+
+            <div class="tarif-card border-purple-500/40" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="font-bold uppercase tracking-tighter">Online</h3>
+                <div class="price">$399</div>
+                <ul class="text-xs space-y-3">
+                    <li>Online management</li>
+                    <li>2 creative assets</li>
+                    <li>6-8 Reels / 10 posts</li>
+                    <li>20 stories</li>
+                </ul>
+                <button class="buy-btn mt-6">Initialize</button>
+            </div>
+
+            <div class="tarif-card featured" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 px-3 py-1 rounded-full text-[8px] font-bold uppercase">Optimal</div>
+                <h3 class="font-bold uppercase tracking-tighter">Standart</h3>
+                <div class="price">$599</div>
+                <ul class="text-xs space-y-3">
+                    <li>8 reels / 12 posts</li>
+                    <li>20+ stories</li>
+                    <li>2 shooting days</li>
+                    <li>4 creative assets</li>
+                </ul>
+                <button class="buy-btn-gold mt-6">Initialize</button>
+            </div>
+
+            <div class="tarif-card" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="font-bold uppercase tracking-tighter">Premium</h3>
+                <div class="price">$799</div>
+                <ul class="text-xs space-y-3">
+                    <li>12 reels / 15 posts</li>
+                    <li>4 shooting days</li>
+                    <li>6 creative assets</li>
+                    <li>Full Analytics</li>
+                </ul>
+                <button class="buy-btn mt-6">Initialize</button>
+            </div>
+
+            <div class="tarif-card vip" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="font-bold uppercase tracking-tighter text-yellow-500">VIP</h3>
+                <div class="price text-white">$999</div>
+                <ul class="text-xs space-y-3">
+                    <li class="text-purple-400 font-bold">Full IT Website</li>
+                    <li class="text-purple-400 font-bold">Logo Branding</li>
+                    <li>Infinity Reels</li>
+                    <li>Infinity Posts</li>
+                </ul>
+                <button class="buy-btn-vip mt-6">Initialize</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-gradient-to-b from-transparent to-[#0a0515]">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-form p-12 rounded-[3rem] border border-white/5" data-aos="zoom-in-up">
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl font-black font-[Syne]">Establish Connection</h2>
+                    <p class="text-gray-500 text-sm mt-2 font-light">Enter your parameters to begin the consultation phase.</p>
+                </div>
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Identity</label>
+                        <input type="text" placeholder="Full Name" class="input-field w-full">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Comm_Link</label>
+                        <input type="email" placeholder="Email Address" class="input-field w-full">
+                    </div>
+                    <div class="md:col-span-2 space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Mission_Type</label>
+                        <select class="input-field w-full appearance-none">
+                            <option>Select Tarif Protocol</option>
+                            <option>VIP Module ($999)</option>
+                            <option>Premium Module ($799)</option>
+                            <option>Standart Module ($599)</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Mission_Brief</label>
+                        <textarea placeholder="Tell us about your project..." class="input-field w-full h-32"></textarea>
+                    </div>
+                    <button type="submit" class="cta-purple w-full md:col-span-2 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs">Transmit Data</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-white/5">
+        <p class="text-[10px] text-gray-600 uppercase tracking-widest">© 2026 LENO AGENCY — SYNCED & SECURED</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -44,52 +44,141 @@
         </a>
     </section>
 
-    <section id="projects" class="py-24 px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto mb-16 flex justify-between items-end">
-            <div>
-                <h2 class="text-sm uppercase tracking-[0.4em] text-purple-500 mb-2">Data Registry</h2>
-                <h3 class="text-6xl font-black font-[Syne]">Masterpieces</h3>
-            </div>
-            <p class="text-gray-500 max-w-xs text-right hidden md:block italic text-sm">Translating complex logic into visual luxury.</p>
+    <section id="projects" class="py-32 px-6 bg-[#08020d]">
+    <div class="max-w-7xl mx-auto mb-16 text-center">
+        <h2 class="text-xs uppercase tracking-[0.5em] text-purple-500 mb-4" data-aos="fade-down">Registry of Excellence</h2>
+        <h3 class="text-6xl font-black font-[Syne]" data-aos="fade-up">Project Catalog</h3>
+        
+        <div class="flex flex-wrap justify-center gap-4 mt-10">
+            <button onclick="filterVault('web')" class="vault-btn active">Websites</button>
+            <button onclick="filterVault('smm')" class="vault-btn">SMM / Instagram</button>
+            <button onclick="filterVault('media')" class="vault-btn">Media / Logos / Cartoons</button>
         </div>
+    </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-7xl mx-auto">
-            
-            <div class="md:col-span-8 group relative overflow-hidden rounded-[2.5rem] h-[500px] glass-card cursor-pointer" data-aos="fade-right">
-                <div class="scanner"></div>
-                <img src="./assets/LENO2.jpg" alt="IT App" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#05010a] via-[#05010a]/20 to-transparent"></div>
-                <div class="absolute bottom-12 left-12 transition-all duration-500 group-hover:-translate-y-4">
-                    <span class="px-4 py-1 border border-purple-500 rounded-full text-[10px] uppercase tracking-widest text-purple-400 bg-purple-500/10">IT Solution_01</span>
-                    <h4 class="text-5xl font-black mt-4 font-[Syne]">NEO-CORE</h4>
-                    <p class="text-gray-400 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 max-w-md text-sm leading-relaxed">Advanced decentralized banking architecture featuring AI fraud mitigation and neural security layers.</p>
+    <div id="vault-web" class="vault-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+        
+        <div class="web-catalog-item group" data-aos="zoom-in-up">
+            <div class="browser-frame">
+                <div class="browser-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <div class="url-bar text-[10px] text-gray-500">https://bristot-coffee.uz/</div>
                 </div>
-            </div>
-
-            <div class="md:col-span-4 group relative overflow-hidden rounded-[2.5rem] h-[500px] glass-card cursor-pointer" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80" alt="Logo Design" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                <div class="absolute inset-0 bg-purple-900/40 group-hover:bg-purple-900/10 transition-colors"></div>
-                <div class="absolute bottom-12 left-10">
-                    <span class="px-4 py-1 border border-white/30 rounded-full text-[10px] uppercase tracking-widest">Visual_ID</span>
-                    <h4 class="text-3xl font-black mt-4 font-[Syne]">LUVIA LUXE</h4>
-                    <p class="text-gray-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-xs">Premium identity systems and 3D cartoon avatars for high-end commerce.</p>
-                </div>
-            </div>
-
-            <div class="md:col-span-12 group relative overflow-hidden rounded-[2.5rem] h-[350px] glass-card cursor-pointer" data-aos="fade-up">
-                <div class="absolute inset-0 bg-[#1a0b2e] flex flex-col md:flex-row items-center justify-around px-12">
-                    <div class="text-center md:text-left">
-                        <h5 class="text-[10rem] font-black text-white/5 absolute left-10 top-0 pointer-events-none">VIRAL</h5>
-                        <h4 class="text-4xl font-black font-[Syne] relative z-10">Digital Explosion</h4>
-                        <p class="text-purple-400 font-bold mt-2 tracking-widest uppercase text-xs">+400% GROWTH REGISTERED</p>
-                    </div>
-                    <div class="glass p-6 rounded-2xl max-w-sm border border-white/10 hidden md:block">
-                        <p class="text-sm italic text-gray-400 font-light leading-relaxed">"The animated characters and Reels strategy provided by Leno Agency didn't just market our product—it started a cultural shift."</p>
+                <div class="browser-content">
+                    <img src="/assets/bristot.png" alt="Bristot Coffee" class="scrolling-img">
+                    <div class="overlay-info">
+                        <span class="tech-tag">E-Commerce / UI UX</span>
+                        <h4 class="text-xl font-bold font-[Syne]">BRISTOT COFFEE</h4>
                     </div>
                 </div>
             </div>
+            <div class="mt-6 flex justify-between items-start">
+                <div>
+                    <h5 class="text-lg font-bold font-[Syne]">Coffee Distribution</h5>
+                    <p class="text-xs text-gray-500">Premium E-com Solution</p>
+                </div>
+                <a href="#" class="view-link">View Project →</a>
+            </div>
         </div>
-    </section>
+
+        <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="100">
+            <div class="browser-frame">
+                <div class="browser-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <div class="url-bar text-[10px] text-gray-500">https://aileaders.uz/</div>
+                </div>
+                <div class="browser-content">
+                    <img src="/assets/aileaders.png" alt="AI Leaders" class="scrolling-img">
+                    <div class="overlay-info">
+                        <span class="tech-tag">Next.js / AI Integration</span>
+                        <h4 class="text-xl font-bold font-[Syne]">AI LEADERS</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-between items-start">
+                <div>
+                    <h5 class="text-lg font-bold font-[Syne]">Tech Community</h5>
+                    <p class="text-xs text-gray-500">Futuristic Portal</p>
+                </div>
+                <a href="#" class="view-link">View Project →</a>
+            </div>
+        </div>
+
+        <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="200">
+            <div class="browser-frame">
+                <div class="browser-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <div class="url-bar text-[10px] text-gray-500">https://animated-identity.com</div>
+                </div>
+                <div class="browser-content">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80" alt="Creative Web" class="scrolling-img">
+                    <div class="overlay-info">
+                        <span class="tech-tag">React / Animation</span>
+                        <h4 class="text-xl font-bold font-[Syne]">CARTOON HUB</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-between items-start">
+                <div>
+                    <h5 class="text-lg font-bold font-[Syne]">2D Cartoon Studio</h5>
+                    <p class="text-xs text-gray-500">Web Dev & Assets</p>
+                </div>
+                <a href="#" class="view-link">View Project →</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="vault-smm" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div class="insta-phone-mockup group" data-aos="fade-up">
+            <div class="phone-frame glass rounded-[3rem] p-3 border border-white/20">
+                <div class="phone-screen bg-black rounded-[2.5rem] overflow-hidden aspect-[9/19]">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                         <span class="text-white font-bold tracking-tighter text-xl">@Leno_SMM</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-4 text-xs uppercase tracking-widest text-purple-400">Viral Strategy</p>
+        </div>
+        </div>
+
+    <div id="vault-media" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    
+    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in">
+        <div class="video-container relative h-64 overflow-hidden">
+            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                <source src="assets/biotime.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-2 py-1 rounded text-[8px] uppercase tracking-widest">Preview_Mode</div>
+        </div>
+        <div class="p-6">
+            <h5 class="font-bold font-[Syne] text-lg uppercase">Mascot Evolution</h5>
+            <p class="text-[10px] text-purple-400 font-mono mt-1">TYPE: 3D_CARTOON</p>
+        </div>
+    </div>
+
+    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+        <div class="video-container relative h-64 overflow-hidden">
+            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                <source src="assets/biotime.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+        </div>
+        <div class="p-6">
+            <h5 class="font-bold font-[Syne] text-lg uppercase">Viral Reels Edit</h5>
+            <p class="text-[10px] text-purple-400 font-mono mt-1">TYPE: DYNAMIC_SMM</p>
+        </div>
+    </div>
+
+    <div class="media-card glass p-8 rounded-3xl group flex flex-col items-center justify-center border border-white/5 hover:border-purple-500/50 transition-all" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/logo-sample.png" class="w-full h-32 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+        <h5 class="mt-8 font-bold font-[Syne] uppercase">Brand Identity</h5>
+        <span class="text-[10px] text-gray-500 tracking-widest mt-2">LOGO_DESIGN_SYSTEM</span>
+    </div>
+
+</div>
+</section>
 
     <section id="pricing" class="py-24 px-6 max-w-7xl mx-auto">
         <h2 class="text-center text-[10px] uppercase tracking-[0.5em] text-purple-500 mb-4">Investment Modules</h2>

@@ -177,3 +177,124 @@ body {
 }
 
 .nav-item:hover { color: #8B5CF6; text-shadow: 0 0 10px #8B5CF6; }
+
+/* Catalog Styles */
+.browser-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.browser-header {
+    background: #252525;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.url-bar {
+    background: #111;
+    flex-grow: 1;
+    margin-left: 10px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.browser-content {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Auto-Scrolling Image Logic */
+.scrolling-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    transition: top 5s ease-in-out; /* Slower for long websites */
+    filter: brightness(0.7) grayscale(0.5);
+}
+
+.web-catalog-item:hover .scrolling-img {
+    top: -150%; /* Adjust this based on how long your screenshot is */
+    filter: brightness(1) grayscale(0);
+}
+
+.web-catalog-item:hover .browser-frame {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #8B5CF6;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.overlay-info {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5,1,10,0.9), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.tech-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #8B5CF6;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.view-link {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #8B5CF6;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.view-link:hover { opacity: 1; letter-spacing: 1px; }
+
+/* Vault Navigation Buttons */
+.vault-btn {
+    padding: 0.8rem 2rem;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    transition: 0.4s;
+}
+
+.vault-btn.active {
+    background: #8B5CF6;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+.insta-mockup {
+    transition: transform 0.3s;
+}
+.insta-mockup:hover {
+    transform: perspective(1000px) rotateY(10deg);
+}
+
+.media-card {
+    cursor: crosshair;
+    transition: 0.5s;
+}
+.media-card:hover {
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.2));
+}

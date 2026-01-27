@@ -80,3 +80,24 @@ document.querySelectorAll('.glass-card').forEach(card => {
         card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
     });
 });
+
+function filterVault(category) {
+    // Hide all categories
+    document.querySelectorAll('.vault-content').forEach(vault => {
+        vault.classList.add('hidden');
+    });
+    
+    // Remove active state from all buttons
+    document.querySelectorAll('.vault-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-purple-600');
+    });
+    
+    // Show the selected category
+    document.getElementById('vault-' + category).classList.remove('hidden');
+    
+    // Update active button style
+    event.currentTarget.classList.add('active', 'bg-purple-600');
+    
+    // Reset AOS to catch new elements
+    AOS.refresh();
+}

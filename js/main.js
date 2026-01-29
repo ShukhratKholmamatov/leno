@@ -101,3 +101,31 @@ function filterVault(category) {
     // Reset AOS to catch new elements
     AOS.refresh();
 }
+
+// Function to handle 4-second video previews
+function initVideoPreviews() {
+    const videos = document.querySelectorAll('.preview-video');
+    
+    videos.forEach(video => {
+        // Start playing as soon as it's ready
+        video.play();
+
+        // Reset the video to the start every 4 seconds
+        setInterval(() => {
+            video.currentTime = 0;
+            video.play();
+        }, 10000); // 4000ms = 4 seconds
+    });
+}
+
+// Ensure videos start when the Media vault is opened
+const originalFilterVault = filterVault;
+filterVault = function(category) {
+    originalFilterVault(category); // Run existing filter logic
+    if(category === 'media') {
+        initVideoPreviews();
+    }
+};
+
+// Also run on page load for any visible videos
+document.addEventListener('DOMContentLoaded', initVideoPreviews);

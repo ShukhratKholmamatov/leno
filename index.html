@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="uz" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,8 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Syne:wght@700;800&display=swap');
+        .lang-btn { cursor: pointer; transition: 0.3s; opacity: 0.5; }
+        .lang-active { opacity: 1; color: #8B5CF6; text-shadow: 0 0 10px #8B5CF6; font-weight: 900; }
     </style>
 </head>
 <body class="bg-[#05010a] text-white overflow-x-hidden font-[Inter]">
@@ -20,270 +22,329 @@
     <div id="cursor-blur" class="hidden md:block"></div>
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 p-2 glass rounded-full border border-purple-500/30" id="hud-nav">
-        <a href="#home" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400">Core</a>
-        <a href="#projects" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400">Masterpieces</a>
-        <a href="#pricing" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400">Tarifs</a>
-        <a href="#contact" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2">Sync Now</a>
+        <div class="flex border-r border-white/10 pr-2 mr-2">
+            <button onclick="changeLang('uz')" id="btn-uz" class="lang-btn px-2 text-[9px] lang-active">UZ</button>
+            <button onclick="changeLang('ru')" id="btn-ru" class="lang-btn px-2 text-[9px]">RU</button>
+            <button onclick="changeLang('en')" id="btn-en" class="lang-btn px-2 text-[9px]">EN</button>
+        </div>
+        <a href="#home" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-core">Core</a>
+        <a href="#projects" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-projects">Masterpieces</a>
+        <a href="#pricing" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-tarifs">Tarifs</a>
+        <a href="#contact" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2" data-i18n="nav-sync">Sync Now</a>
     </nav>
 
     <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
         
-        <h1 class="text-[12vw] font-black italic hero-glitch mb-4 font-[Syne]" data-text="LENO" data-aos="zoom-in">
-            LENO
-        </h1>
+        <div class="mb-8" data-aos="zoom-in" data-aos-duration="1200">
+            <img src="/assets/leno logo3.0.png" alt="LENO Official Logo" class="w-[300px] md:w-[500px] drop-shadow-[0_0_30px_rgba(139,92,246,0.4)]">
+        </div>
         
         <div class="flex items-center justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="300">
             <span class="h-[1px] w-12 bg-purple-500"></span>
-            <p class="uppercase tracking-[1em] text-[10px] text-purple-400">Intelligence • Elegance • Evolution</p>
+            <p class="uppercase tracking-[1em] text-[10px] text-purple-400" data-i18n="hero-sub">Intelligence • Elegance • Evolution</p>
             <span class="h-[1px] w-12 bg-purple-500"></span>
         </div>
         
-        <a href="#pricing" class="cta-purple px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 active:scale-95" data-aos="fade-up" data-aos-delay="500">
+        <a href="#pricing" class="cta-purple px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 active:scale-95" data-aos="fade-up" data-aos-delay="500" data-i18n="hero-btn">
             Initialise Protocol
         </a>
     </section>
 
     <section id="projects" class="py-32 px-6 bg-[#08020d]">
-    <div class="max-w-7xl mx-auto mb-16 text-center">
-        <h2 class="text-xs uppercase tracking-[0.5em] text-purple-500 mb-4" data-aos="fade-down">Registry of Excellence</h2>
-        <h3 class="text-6xl font-black font-[Syne]" data-aos="fade-up">Project Catalog</h3>
-        
-        <div class="flex flex-wrap justify-center gap-4 mt-10">
-            <button onclick="filterVault('web')" class="vault-btn active">Websites</button>
-            <button onclick="filterVault('smm')" class="vault-btn">SMM / Instagram</button>
-            <button onclick="filterVault('media')" class="vault-btn">Media / Logos / Cartoons</button>
+        <div class="max-w-7xl mx-auto mb-16 text-center">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-purple-500 mb-4" data-aos="fade-down" data-i18n="registry-title">Registry of Excellence</h2>
+            <h3 class="text-6xl font-black font-[Syne]" data-aos="fade-up" data-i18n="catalog-title">Project Catalog</h3>
+            
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <button onclick="filterVault('web')" class="vault-btn active" data-i18n="vault-web">Websites</button>
+                <button onclick="filterVault('smm')" class="vault-btn" data-i18n="vault-smm">SMM / Instagram</button>
+                <button onclick="filterVault('media')" class="vault-btn" data-i18n="vault-media">Media / Logos / Cartoons</button>
+            </div>
         </div>
-    </div>
 
-    <div id="vault-web" class="vault-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-        
-        <div class="web-catalog-item group" data-aos="zoom-in-up">
-            <div class="browser-frame">
-                <div class="browser-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <div class="url-bar text-[10px] text-gray-500">https://bristot-coffee.uz/</div>
-                </div>
-                <div class="browser-content">
-                    <img src="/assets/bristot.png" alt="Bristot Coffee" class="scrolling-img">
-                    <div class="overlay-info">
-                        <span class="tech-tag">E-Commerce / Website</span>
-                        <h4 class="text-xl font-bold font-[Syne]">BRISTOT COFFEE</h4>
+        <div id="vault-web" class="vault-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+            <div class="web-catalog-item group" data-aos="zoom-in-up">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://bristot-coffee.uz/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/bristot.png" alt="Bristot Coffee" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-1">E-Commerce / Website</span>
+                            <h4 class="text-xl font-bold font-[Syne]">BRISTOT COFFEE</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-6 flex justify-between items-start">
-                <div>
-                    <h5 class="text-lg font-bold font-[Syne]">Coffee Distribution</h5>
-                    <p class="text-xs text-gray-500">Website for Premium Coffe brand</p>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Syne]" data-i18n="web-title-1">Coffee Distribution</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-1">Website for Premium Coffe brand</p>
+                    </div>
+                    <a href="https://bristot-coffee.uz/" class="view-link" data-i18n="view-project">View Project →</a>
                 </div>
-                <a href="https://bristot-coffee.uz/" class="view-link">View Project →</a>
             </div>
-        </div>
 
-        <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="100">
-            <div class="browser-frame">
-                <div class="browser-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <div class="url-bar text-[10px] text-gray-500">https://aileaders.uz/</div>
-                </div>
-                <div class="browser-content">
-                    <img src="/assets/aileaders.png" alt="AI Leaders" class="scrolling-img">
-                    <div class="overlay-info">
-                        <span class="tech-tag">Next.js / AI Integration</span>
-                        <h4 class="text-xl font-bold font-[Syne]">AI LEADERS</h4>
+            <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://aileaders.uz/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/aileaders.png" alt="AI Leaders" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-2">Next.js / AI Integration</span>
+                            <h4 class="text-xl font-bold font-[Syne]">AI LEADERS</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-6 flex justify-between items-start">
-                <div>
-                    <h5 class="text-lg font-bold font-[Syne]">Tech Community</h5>
-                    <p class="text-xs text-gray-500">Website for Ministry of Information Technologies</p>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Syne]" data-i18n="web-title-2">Tech Community</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-2">Website for Ministry of Information Technologies</p>
+                    </div>
+                    <a href="https://aileaders.uz/" class="view-link" data-i18n="view-project">View Project →</a>
                 </div>
-                <a href="https://aileaders.uz/" class="view-link">View Project →</a>
             </div>
-        </div>
 
-        <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="200">
-            <div class="browser-frame">
-                <div class="browser-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <div class="url-bar text-[10px] text-gray-500">https://zoomlionuzbekistan.net/</div>
-                </div>
-                <div class="browser-content">
-                    <img src="/assets/zoomlionuzbekistan.png" alt="Creative Web" class="scrolling-img">
-                    <div class="overlay-info">
-                        <span class="tech-tag">Website / Branding</span>
-                        <h4 class="text-xl font-bold font-[Syne]">Zoomlion</h4>
+            <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://zoomlionuzbekistan.net/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/zoomlionuzbekistan.png" alt="Creative Web" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-3">Website / Branding</span>
+                            <h4 class="text-xl font-bold font-[Syne]">Zoomlion</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-6 flex justify-between items-start">
-                <div>
-                    <h5 class="text-lg font-bold font-[Syne]">Truck sellers</h5>
-                    <p class="text-xs text-gray-500">Website for International Truck Seller</p>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Syne]" data-i18n="web-title-3">Truck sellers</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-3">Website for International Truck Seller</p>
+                    </div>
+                    <a href="https://zoomlionuzbekistan.net/" class="view-link" data-i18n="view-project">View Project →</a>
                 </div>
-                <a href="https://zoomlionuzbekistan.net/" class="view-link">View Project →</a>
             </div>
         </div>
-    </div>
 
-    <div id="vault-smm" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-        <div class="insta-phone-mockup group" data-aos="fade-up">
-            <div class="phone-frame glass rounded-[3rem] p-3 border border-white/20">
-                <div class="phone-screen bg-black rounded-[2.5rem] overflow-hidden aspect-[9/19]">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                         <span class="text-white font-bold tracking-tighter text-xl">@Leno_SMM</span>
+        <div id="vault-smm" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-purple-500/20 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/20">
+                        <img src="/assets/Actiwe logo.pngs.png" alt="Client Logo" class="w-full h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Syne] uppercase tracking-tighter">Actiwe.uz</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">SMM + BRANDING</p>
                     </div>
                 </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 italic" data-i18n="smm-story-1">
+                    "After we executed a comprehensive SMM strategy and refined their digital identity, our client successfully secured a massive contract with **PIIMA**..."
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full border border-purple-500/30" data-i18n="badge-prestige">PRESTIGE DEAL</span>
+                    <span class="text-[9px] bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30 text-green-400" data-i18n="badge-success">SUCCESSFUL EXCEPTION</span>
+                </div>
             </div>
-            <p class="text-center mt-4 text-xs uppercase tracking-widest text-purple-400">Viral Strategy</p>
-        </div>
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-purple-500/20 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/20">
+                        <img src="/assets/7echka.png" alt="Client Logo" class="w-full h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Syne] uppercase tracking-tighter">7echka</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">SMM + BRANDING</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 italic" data-i18n="smm-story-2">
+                    After developing a strong brand identity and executing a targeted PR strategy, we positioned the company as a recognizable name...
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full border border-purple-500/30" data-i18n="badge-prestige">PRESTIGE DEAL</span>
+                    <span class="text-[9px] bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30 text-green-400" data-i18n="badge-success">SUCCESSFUL EXCEPTION</span>
+                </div>
+            </div>
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/Artboard 20 copy@4x (1).png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Syne] uppercase tracking-tighter">NEOS</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">CONTENT STRATEGY</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6" data-i18n="smm-story-3">
+                    By implementing a results-focused social media marketing strategy...
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-furniture">Furniture Company</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-branding">Brand Identity</span>
+                </div>
+            </div>
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/eduventure logo.png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Syne] uppercase tracking-tighter">Eduventure</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">REBRANDING SUCCESS</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6" data-i18n="smm-story-4">
+                    Through a data-driven marketing funnel...
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-education">Education</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-students">Students</span>
+                </div>
+            </div>
         </div>
 
-    <div id="vault-media" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-    
-    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in">
-        <div class="video-container relative h-64 overflow-hidden">
-            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
-                <source src="assets/biotime.mp4" type="video/mp4">  
-            </video>
-            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
-            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-2 py-1 rounded text-[8px] uppercase tracking-widest">Preview_Mode</div>
-        </div>
-        <div class="p-6">
-            <h5 class="font-bold font-[Syne] text-lg uppercase">Biotime</h5>
-            <p class="text-[10px] text-purple-400 font-mono mt-1">Chemists' shop</p>
-        </div>
-    </div>
+        <div id="vault-media" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/biotime.mp4" type="video/mp4">  
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-2 py-1 rounded text-[8px] uppercase tracking-widest">Preview_Mode</div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Syne] text-lg uppercase">Biotime</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-1">Chemists' shop</p>
+                </div>
+            </div>
 
-    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
-        <div class="video-container relative h-64 overflow-hidden">
-            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
-                <source src="assets/cartoon.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
-        </div>
-        <div class="p-6">
-            <h5 class="font-bold font-[Syne] text-lg uppercase">Olmoxon</h5>
-            <p class="text-[10px] text-purple-400 font-mono mt-1">Cartoon</p>
-        </div>
-    </div>
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/cartoon.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Syne] text-lg uppercase">Olmoxon</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-2">Cartoon</p>
+                </div>
+            </div>
 
-    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
-        <div class="video-container relative h-64 overflow-hidden">
-            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
-                <source src="assets/A0001-0390.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
-        </div>
-        <div class="p-6">
-            <h5 class="font-bold font-[Syne] text-lg uppercase">Evelom</h5>
-            <p class="text-[10px] text-purple-400 font-mono mt-1">Cosmetics</p>
-        </div>
-    </div>
-    
-    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
-        <div class="video-container relative h-64 overflow-hidden">
-            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
-                <source src="assets/artitude.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
-        </div>
-        <div class="p-6">
-            <h5 class="font-bold font-[Syne] text-lg uppercase">ATTO</h5>
-            <p class="text-[10px] text-purple-400 font-mono mt-1">Public Transport</p>
-        </div>
-    </div>
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/A0001-0390.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Syne] text-lg uppercase">Evelom</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-3">Cosmetics</p>
+                </div>
+            </div>
+            
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/artitude.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Syne] text-lg uppercase">ATTO</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-4">Public Transport</p>
+                </div>
+            </div>
 
-    <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
-        <div class="video-container relative h-64 overflow-hidden">
-            <video class="preview-video w-full h-full object-cover" muted playsinline loop>
-                <source src="assets/ATTO.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/ATTO.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Syne] text-lg uppercase">Artitude</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-5">Cosmetics</p>
+                </div>
+            </div>
         </div>
-        <div class="p-6">
-            <h5 class="font-bold font-[Syne] text-lg uppercase">Artitude</h5>
-            <p class="text-[10px] text-purple-400 font-mono mt-1">Cosmetics</p>
-        </div>
-    </div>
-
-    <!-- For Logos -->
-    <!-- <div class="media-card glass p-8 rounded-3xl group flex flex-col items-center justify-center border border-white/5 hover:border-purple-500/50 transition-all" data-aos="zoom-in" data-aos-delay="200">
-        <img src="assets/A0001-0390.mp4" class="w-full h-32 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-        <h5 class="mt-8 font-bold font-[Syne] uppercase">Brand Identity</h5>
-        <span class="text-[10px] text-gray-500 tracking-widest mt-2">LOGO_DESIGN_SYSTEM</span>
-    </div> -->
-
-</div>
-</section>
+    </section>
 
     <section id="pricing" class="py-24 px-6 max-w-7xl mx-auto">
-        <h2 class="text-center text-[10px] uppercase tracking-[0.5em] text-purple-500 mb-4">Investment Modules</h2>
-        <h3 class="text-5xl font-black text-center mb-16 font-[Syne]">Acquisition Tarifs</h3>
+        <h2 class="text-center text-[10px] uppercase tracking-[0.5em] text-purple-500 mb-4" data-i18n="pricing-mod">Investment Modules</h2>
+        <h3 class="text-5xl font-black text-center mb-16 font-[Syne]" data-i18n="pricing-title">Acquisition Tarifs</h3>
         
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
             <div class="tarif-card" data-aos="fade-up">
-                <h3 class="font-bold uppercase tracking-tighter">Ekonom</h3>
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t1-name">Ekonom</h3>
                 <div class="price">$299</div>
-                <ul class="text-xs space-y-3">
+                <ul class="text-xs space-y-3" data-i18n="t1-list">
                     <li>2 creative assets</li>
                     <li>1 shooting day</li>
                     <li>4 Reels / 8 Posts</li>
                     <li>15 stories</li>
                 </ul>
-                <button class="buy-btn mt-6">Initialize</button>
+                <button class="buy-btn mt-6" data-i18n="btn-init">Initialize</button>
             </div>
 
             <div class="tarif-card border-purple-500/40" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="font-bold uppercase tracking-tighter">Online</h3>
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t2-name">Online</h3>
                 <div class="price">$399</div>
-                <ul class="text-xs space-y-3">
+                <ul class="text-xs space-y-3" data-i18n="t2-list">
                     <li>Online management</li>
                     <li>2 creative assets</li>
                     <li>6-8 Reels / 10 posts</li>
                     <li>20 stories</li>
                 </ul>
-                <button class="buy-btn mt-6">Initialize</button>
+                <button class="buy-btn mt-6" data-i18n="btn-init">Initialize</button>
             </div>
 
             <div class="tarif-card featured" data-aos="fade-up" data-aos-delay="200">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 px-3 py-1 rounded-full text-[8px] font-bold uppercase">Optimal</div>
-                <h3 class="font-bold uppercase tracking-tighter">Standart</h3>
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 px-3 py-1 rounded-full text-[8px] font-bold uppercase" data-i18n="optimal">Optimal</div>
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t3-name">Standart</h3>
                 <div class="price">$599</div>
-                <ul class="text-xs space-y-3">
+                <ul class="text-xs space-y-3" data-i18n="t3-list">
                     <li>8 reels / 12 posts</li>
                     <li>20+ stories</li>
                     <li>2 shooting days</li>
                     <li>4 creative assets</li>
                 </ul>
-                <button class="buy-btn-gold mt-6">Initialize</button>
+                <button class="buy-btn-gold mt-6" data-i18n="btn-init">Initialize</button>
             </div>
 
             <div class="tarif-card" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="font-bold uppercase tracking-tighter">Premium</h3>
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t4-name">Premium</h3>
                 <div class="price">$799</div>
-                <ul class="text-xs space-y-3">
+                <ul class="text-xs space-y-3" data-i18n="t4-list">
                     <li>12 reels / 15 posts</li>
                     <li>4 shooting days</li>
                     <li>6 creative assets</li>
                     <li>Full Analytics</li>
                 </ul>
-                <button class="buy-btn mt-6">Initialize</button>
+                <button class="buy-btn mt-6" data-i18n="btn-init">Initialize</button>
             </div>
 
             <div class="tarif-card vip" data-aos="fade-up" data-aos-delay="400">
-                <h3 class="font-bold uppercase tracking-tighter text-yellow-500">VIP</h3>
+                <h3 class="font-bold uppercase tracking-tighter text-yellow-500" data-i18n="t5-name">VIP</h3>
                 <div class="price text-white">$999</div>
-                <ul class="text-xs space-y-3">
+                <ul class="text-xs space-y-3" data-i18n="t5-list">
                     <li class="text-purple-400 font-bold">Full IT Website</li>
                     <li class="text-purple-400 font-bold">Logo Branding</li>
                     <li>Infinity Reels</li>
                     <li>Infinity Posts</li>
                 </ul>
-                <button class="buy-btn-vip mt-6">Initialize</button>
+                <button class="buy-btn-vip mt-6" data-i18n="btn-init">Initialize</button>
             </div>
         </div>
     </section>
@@ -292,32 +353,32 @@
         <div class="max-w-4xl mx-auto">
             <div class="glass-form p-12 rounded-[3rem] border border-white/5" data-aos="zoom-in-up">
                 <div class="text-center mb-10">
-                    <h2 class="text-4xl font-black font-[Syne]">Establish Connection</h2>
-                    <p class="text-gray-500 text-sm mt-2 font-light">Enter your parameters to begin the consultation phase.</p>
+                    <h2 class="text-4xl font-black font-[Syne]" data-i18n="form-title">Establish Connection</h2>
+                    <p class="text-gray-500 text-sm mt-2 font-light" data-i18n="form-sub">Enter your parameters to begin the consultation phase.</p>
                 </div>
                 <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Identity</label>
-                        <input type="text" placeholder="Full Name" class="input-field w-full">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-name">Identity</label>
+                        <input type="text" placeholder="Full Name" class="input-field w-full" data-i18n-ph="ph-name">
                     </div>
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Comm_Link</label>
-                        <input type="email" placeholder="Email Address" class="input-field w-full">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-email">Comm_Link</label>
+                        <input type="email" placeholder="Email Address" class="input-field w-full" data-i18n-ph="ph-email">
                     </div>
                     <div class="md:col-span-2 space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Mission_Type</label>
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-type">Mission_Type</label>
                         <select class="input-field w-full appearance-none">
-                            <option>Select Tarif Protocol</option>
+                            <option data-i18n="opt-1">Select Tarif Protocol</option>
                             <option>VIP Module ($999)</option>
                             <option>Premium Module ($799)</option>
                             <option>Standart Module ($599)</option>
                         </select>
                     </div>
                     <div class="md:col-span-2 space-y-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2">Mission_Brief</label>
-                        <textarea placeholder="Tell us about your project..." class="input-field w-full h-32"></textarea>
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-msg">Mission_Brief</label>
+                        <textarea placeholder="Tell us about your project..." class="input-field w-full h-32" data-i18n-ph="ph-msg"></textarea>
                     </div>
-                    <button type="submit" class="cta-purple w-full md:col-span-2 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs">Transmit Data</button>
+                    <button type="submit" class="cta-purple w-full md:col-span-2 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs" data-i18n="form-btn">Transmit Data</button>
                 </form>
             </div>
         </div>

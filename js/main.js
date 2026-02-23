@@ -2,7 +2,8 @@
 const langData = {
     uz: {
         "nav-core": "Asosiy", "nav-projects": "Loyihalar", "nav-tarifs": "Tariflar", "nav-sync": "Bog'lanish",
-        "hero-sub": "Intellekt • Nafosat • Evolyutsiya", "hero-btn": "Protokolni Boshlash",
+        "hero-slogan": "AGENTLIKDAN KO'PROQ", "hero-sub": "Intellekt • Nafosat • Evolyutsiya", "hero-btn": "Protokolni Boshlash",
+        "stat-projects": "Yakunlangan Loyihalar", "stat-clients": "Mamnun Mijozlar", "stat-years": "Yillik Tajriba",
         "registry-title": "Mukammallik Reyestri", "catalog-title": "Loyihalar Katalogi",
         "vault-web": "Veb-saytlar", "vault-smm": "SMM / Instagram", "vault-media": "Media / Multfilmlar",
         "web-tag-1": "E-Kommertsiya / Veb-sayt", "web-title-1": "Kofe Distributsiyasi", "web-desc-1": "Premium kofe brendi uchun veb-sayt",
@@ -23,14 +24,15 @@ const langData = {
         "t3-name": "Standart", "t3-list": "<li>8 ta Reels / 12 ta Post</li><li>20+ stories</li><li>2 ta shooting day</li><li>4 ta kreativ</li>",
         "t4-name": "Premium", "t4-list": "<li>12 ta Reels / 15 ta Post</li><li>4 ta shooting day</li><li>6 ta kreativ</li><li>To'liq Analitika</li>",
         "t5-name": "VIP", "t5-list": "<li>Veb-sayt</li><li>Logotip brending</li><li>Cheksiz Reels</li><li>Cheksiz Postlar</li>",
-        "optimal": "Optimal", "btn-init": "Tanlash",
-        "form-title": "Aloqa O'rnatish", "form-sub": "Konsultatsiya bosqichini boshlash uchun parametrlarni kiriting.",
-        "label-name": "Shaxsiyat", "label-email": "Aloqa_Link", "label-type": "Missiya_Turi", "label-msg": "Missiya_Tafsiloti",
-        "ph-name": "To'liq Ismingiz", "ph-email": "Email manzilingiz", "opt-1": "Tarif protokolini tanlang", "ph-msg": "Loyiha haqida yozing...", "form-btn": "Ma'lumotni Yuborish"
+        "optimal": "Eng yaxshi", "btn-init": "Tanlash",
+        "form-title": "Bog'lanish", "form-sub": "Ma'lumotlaringizni qoldiring, biz tez orada aloqaga chiqamiz.",
+        "label-name": "Ismingiz", "label-email": "Email", "label-type": "Tarifni tanlang", "label-msg": "Xabaringiz",
+        "ph-name": "To'liq Ismingiz", "ph-email": "Email manzilingiz", "opt-1": "Tarifni tanlang", "ph-msg": "Loyiha haqida yozing...", "form-btn": "Yuborish"
     },
     ru: {
         "nav-core": "ГЛАВНАЯ", "nav-projects": "ПРОЕКТЫ", "nav-tarifs": "ТАРИФЫ", "nav-sync": "СВЯЗАТЬСЯ",
-        "hero-sub": "ИНТЕЛЛЕКТ • ЭЛЕГАНТНОСТЬ • ЭВОЛЮЦИЯ", "hero-btn": "ЗАПУСТИТЬ ПРОТОКОЛ",
+        "hero-slogan": "БОЛЬШЕ ЧЕМ АГЕНТСТВО", "hero-sub": "ИНТЕЛЛЕКТ • ЭЛЕГАНТНОСТЬ • ЭВОЛЮЦИЯ", "hero-btn": "ЗАПУСТИТЬ ПРОТОКОЛ",
+        "stat-projects": "Завершённых Проектов", "stat-clients": "Довольных Клиентов", "stat-years": "Лет Опыта",
         "registry-title": "РЕЕСТР СОВЕРШЕНСТВА", "catalog-title": "КАТАЛОГ ПРОЕКТОВ",
         "vault-web": "Веб-сайты", "vault-smm": "SMM / Инстаграм", "vault-media": "Медиа / Мультфильмы",
         "web-tag-1": "E-Commerce / Веб-сайт", "web-title-1": "Дистрибуция Кофе", "web-desc-1": "Сайт для премиального бренда кофе",
@@ -51,38 +53,39 @@ const langData = {
         "t3-name": "Стандарт", "t3-list": "<li>8 Reels / 12 Постов</li><li>20+ сторис</li><li>2 съемочных дня</li><li>4 креатива</li>",
         "t4-name": "Премиум", "t4-list": "<li>12 Reels / 15 Постов</li><li>4 съемочных дня</li><li>6 креативов</li><li>Полная Аналитика</li>",
         "t5-name": "VIP", "t5-list": "<li>Веб-сайт</li><li>Лого брендинг</li><li>Безлимит Reels</li><li>Безлимит Постов</li>",
-        "optimal": "Оптимальный", "btn-init": "Выбрать",
-        "form-title": "Установить Связь", "form-sub": "Введите параметры для начала фазы консультации.",
-        "label-name": "Личность", "label-email": "Связь_Линк", "label-type": "Тип_Миссии", "label-msg": "Детали_Миссии",
-        "ph-name": "Ваше Имя", "ph-email": "Ваш Email", "opt-1": "Выберите тарифный протокол", "ph-msg": "Напишите о проекте...", "form-btn": "Отправить Данные"
+        "optimal": "Лучший выбор", "btn-init": "Выбрать",
+        "form-title": "Связаться с нами", "form-sub": "Оставьте свои данные и мы свяжемся с вами в ближайшее время.",
+        "label-name": "Ваше имя", "label-email": "Email", "label-type": "Выберите тариф", "label-msg": "Сообщение",
+        "ph-name": "Ваше Имя", "ph-email": "Ваш Email", "opt-1": "Выберите тариф", "ph-msg": "Напишите о проекте...", "form-btn": "Отправить"
     },
     en: {
-        "nav-core": "CORE", "nav-projects": "PROJECTS", "nav-tarifs": "TARIFS", "nav-sync": "SYNC NOW",
-        "hero-sub": "INTELLIGENCE • ELEGANCE • EVOLUTION", "hero-btn": "INITIALISE PROTOCOL",
-        "registry-title": "REGISTRY OF EXCELLENCE", "catalog-title": "PROJECT CATALOG",
+        "nav-core": "HOME", "nav-projects": "PROJECTS", "nav-tarifs": "PRICING", "nav-sync": "CONTACT US",
+        "hero-slogan": "MORE THAN AGENCY", "hero-sub": "INTELLIGENCE • ELEGANCE • EVOLUTION", "hero-btn": "GET STARTED",
+        "stat-projects": "Completed Projects", "stat-clients": "Happy Clients", "stat-years": "Years of Experience",
+        "registry-title": "OUR BEST WORK", "catalog-title": "Our Projects",
         "vault-web": "Websites", "vault-smm": "SMM / Instagram", "vault-media": "Media / Cartoons",
-        "web-tag-1": "E-Commerce / Website", "web-title-1": "Coffee Distribution", "web-desc-1": "Website for Premium Coffee brand",
-        "web-tag-2": "Next.js / AI Integration", "web-title-2": "Tech Community", "web-desc-2": "Website for Ministry of Information Technologies",
-        "web-tag-3": "Website / Branding", "web-title-3": "Truck sellers", "web-desc-3": "Website for International Truck Seller",
-        "view-project": "VIEW PROJECT →",
-        "smm-story-1": "\"After we executed a comprehensive SMM strategy and refined their digital identity, our client successfully secured a massive contract with **PIIMA**...\"",
-        "smm-story-2": "After developing a strong brand identity and executing a targeted PR strategy, we positioned the company as a recognizable name across Uzbekistan.",
-        "smm-story-3": "By implementing a results-focused SMM strategy, we helped furniture brands increase customer inquiries and consistent sales.",
-        "smm-story-4": "Through lead generation campaigns, we created a steady pipeline of 10+ active students every month.",
-        "badge-prestige": "PRESTIGE DEAL", "badge-success": "SUCCESSFUL EXPANSION",
+        "web-tag-1": "E-Commerce / Website", "web-title-1": "Coffee Distribution", "web-desc-1": "Website for a premium coffee brand",
+        "web-tag-2": "Next.js / AI Integration", "web-title-2": "Tech Community", "web-desc-2": "Website for IT Ministry",
+        "web-tag-3": "Website / Branding", "web-title-3": "Truck Sales", "web-desc-3": "Website for an international truck dealer",
+        "view-project": "View Project →",
+        "smm-story-1": "\"After our SMM strategy and branding work, the client signed a major contract with PIIMA to supply uniforms for all Presidential schools.\"",
+        "smm-story-2": "We built a strong brand and ran a targeted PR campaign that made the company a trusted name across Uzbekistan.",
+        "smm-story-3": "Our SMM strategy helped furniture brands get more customer inquiries and grow their sales.",
+        "smm-story-4": "Through our marketing campaigns, we brought in 10+ new active students every month.",
+        "badge-prestige": "BIG DEAL", "badge-success": "GROWTH SUCCESS",
         "tag-furniture": "Furniture Company", "tag-branding": "Brand Identity",
         "tag-education": "Education", "tag-students": "Students",
-        "media-type-1": "Chemists' shop", "media-type-2": "Cartoon", "media-type-3": "Cosmetics", "media-type-4": "Public Transport", "media-type-5": "Cosmetics",
-        "pricing-mod": "INVESTMENT MODULES", "pricing-title": "SERVICE TARIFS",
+        "media-type-1": "Pharmacy Chain", "media-type-2": "Cartoon", "media-type-3": "Cosmetics", "media-type-4": "Public Transport", "media-type-5": "Cosmetics",
+        "pricing-mod": "OUR PLANS", "pricing-title": "Pricing Plans",
         "t1-name": "Econom", "t1-list": "<li>2 creative assets</li><li>1 shooting day</li><li>4 Reels / 8 Posts</li><li>15 stories</li>",
         "t2-name": "Online", "t2-list": "<li>Online management</li><li>2 creative assets</li><li>6-8 Reels / 10 posts</li><li>20 stories</li>",
         "t3-name": "Standard", "t3-list": "<li>8 reels / 12 posts</li><li>20+ stories</li><li>2 shooting days</li><li>4 creative assets</li>",
         "t4-name": "Premium", "t4-list": "<li>12 reels / 15 posts</li><li>4 shooting days</li><li>6 creative assets</li><li>Full Analytics</li>",
-        "t5-name": "VIP", "t5-list": "<li>Website</li><li>Logo branding</li><li>Infinity Reels</li><li>Infinity Posts</li>",
-        "optimal": "Optimal", "btn-init": "INITIALIZE",
-        "form-title": "ESTABLISH CONNECTION", "form-sub": "Enter your parameters to begin the consultation phase.",
-        "label-name": "Identity", "label-email": "Comm_Link", "label-type": "Mission_Type", "label-msg": "Mission_Brief",
-        "ph-name": "Full Name", "ph-email": "Email Address", "opt-1": "Select Tarif Protocol", "ph-msg": "Tell us about your project...", "form-btn": "TRANSMIT DATA"
+        "t5-name": "VIP", "t5-list": "<li>Website</li><li>Logo branding</li><li>Unlimited Reels</li><li>Unlimited Posts</li>",
+        "optimal": "Best Value", "btn-init": "Choose Plan",
+        "form-title": "Get in Touch", "form-sub": "Fill in your details and we'll get back to you shortly.",
+        "label-name": "Your Name", "label-email": "Email", "label-type": "Choose Plan", "label-msg": "Your Message",
+        "ph-name": "Full Name", "ph-email": "Email Address", "opt-1": "Select a plan", "ph-msg": "Tell us about your project...", "form-btn": "SEND MESSAGE"
     }
 };
 
@@ -222,8 +225,83 @@ function initVideoPreviews() {
     });
 }
 
+// Choose Tarif & Scroll to Form
+function chooseTarif(value) {
+    const select = document.getElementById('tarif-select');
+    if (select) {
+        select.value = value;
+    }
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Telegram Bot Form Submission
+const TG_BOT_TOKEN = '8764104495:AAEF08bryOf9nyr9fFOg_FlsRdv07uXHleE';
+const TG_CHAT_ID = '-1003788093715';
+
+function sendToTelegram(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('form-name').value.trim();
+    const email = document.getElementById('form-email').value.trim();
+    const tarif = document.getElementById('tarif-select');
+    const tarifText = tarif.options[tarif.selectedIndex].text;
+    const msg = document.getElementById('form-msg').value.trim();
+    const btn = document.getElementById('form-submit-btn');
+
+    if (!name || !email || !tarif.value) return;
+
+    const text = `📩 *New Lead from LENO Website*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n💼 *Plan:* ${tarifText}\n💬 *Message:* ${msg || '—'}`;
+
+    btn.disabled = true;
+    btn.textContent = '...';
+
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.ok) {
+            btn.textContent = '✓';
+            btn.style.background = '#22c55e';
+            document.getElementById('contact-form').reset();
+            setTimeout(() => {
+                btn.textContent = '';
+                btn.style.background = '';
+                btn.disabled = false;
+                changeLang(document.documentElement.lang || 'uz');
+            }, 3000);
+        } else {
+            btn.textContent = 'Error';
+            btn.style.background = '#ef4444';
+            btn.disabled = false;
+            setTimeout(() => {
+                btn.textContent = '';
+                btn.style.background = '';
+                changeLang(document.documentElement.lang || 'uz');
+            }, 3000);
+        }
+    })
+    .catch(() => {
+        btn.textContent = 'Error';
+        btn.style.background = '#ef4444';
+        btn.disabled = false;
+        setTimeout(() => {
+            btn.textContent = '';
+            btn.style.background = '';
+            changeLang(document.documentElement.lang || 'uz');
+        }, 3000);
+    });
+}
+
 // Initialize on Load
 document.addEventListener('DOMContentLoaded', () => {
     initVideoPreviews();
     changeLang('uz'); // Default language
+    document.getElementById('contact-form').addEventListener('submit', sendToTelegram);
 });

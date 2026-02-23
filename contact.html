@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LENO AGENCY | Futuristic IT & Branding</title>
+    <title>LENO AGENCY | Contact</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -47,40 +47,51 @@
         <a href="contact.html" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2" data-i18n="nav-sync">Sync Now</a>
     </nav>
 
-    <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
-
-        <div class="mb-6 flex flex-col items-center" data-aos="zoom-in" data-aos-duration="1200">
-            <img src="/assets/leno logo3.0.png" alt="LENO Official Logo" class="w-[400px] md:w-[700px] drop-shadow-[0_0_30px_rgba(139,92,246,0.4)]">
-            <h2 class="hero-slogan mt-2 text-2xl md:text-4xl font-black font-[Unbounded] uppercase tracking-[0.3em]" data-i18n="hero-slogan">MORE THAN AGENCY</h2>
-        </div>
-
-        <div class="flex items-center justify-center gap-4 mb-6" data-aos="fade-up" data-aos-delay="300">
-            <span class="h-[1px] w-12 bg-purple-500"></span>
-            <p class="uppercase tracking-[1em] text-[10px] text-purple-400" data-i18n="hero-sub">Intelligence • Elegance • Evolution</p>
-            <span class="h-[1px] w-12 bg-purple-500"></span>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-8" data-aos="fade-up" data-aos-delay="400">
-            <div class="text-center">
-                <span class="text-2xl md:text-3xl font-black font-[Unbounded] text-white">50+</span>
-                <p class="text-[9px] uppercase tracking-widest text-gray-500 mt-1" data-i18n="stat-projects">Completed Projects</p>
+    <section id="contact" class="pt-32 pb-24 px-6 bg-gradient-to-b from-transparent to-[#0a0515]">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-form p-12 rounded-[3rem] border border-white/5" data-aos="zoom-in-up">
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl font-black font-[Unbounded]" data-i18n="form-title">Establish Connection</h2>
+                    <p class="text-gray-500 text-sm mt-2 font-light" data-i18n="form-sub">Enter your parameters to begin the consultation phase.</p>
+                </div>
+                <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-name">Identity</label>
+                        <input id="form-name" type="text" placeholder="Full Name" class="input-field w-full" data-i18n-ph="ph-name" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-email">Comm_Link</label>
+                        <input id="form-email" type="email" placeholder="Email Address" class="input-field w-full" data-i18n-ph="ph-email" required>
+                    </div>
+                    <div class="md:col-span-2 space-y-3">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-services">Xizmat turi</label>
+                        <div class="flex flex-wrap gap-3" id="services-group">
+                            <label class="service-chip"><input type="checkbox" name="services" value="Konsultatsiya"> <span data-i18n="svc-consult">Konsultatsiya olish</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="Branding"> <span data-i18n="svc-branding">Branding</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="SMM"> <span data-i18n="svc-smm">SMM</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="Logo"> <span data-i18n="svc-logo">Logo</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="Website"> <span data-i18n="svc-website">Website</span></label>
+                        </div>
+                    </div>
+                    <div id="tarif-wrapper" class="md:col-span-2 space-y-2" style="display:none;">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-type">Mission_Type</label>
+                        <select id="tarif-select" class="input-field w-full appearance-none">
+                            <option value="" data-i18n="opt-1">Select a plan</option>
+                            <option value="econom">Econom — $299</option>
+                            <option value="online">Online — $399</option>
+                            <option value="standart">Standart — $599</option>
+                            <option value="premium">Premium — $799</option>
+                            <option value="vip">VIP — $999</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-msg">Mission_Brief</label>
+                        <textarea id="form-msg" placeholder="Tell us about your project..." class="input-field w-full h-32" data-i18n-ph="ph-msg"></textarea>
+                    </div>
+                    <button id="form-submit-btn" type="submit" class="cta-purple w-full md:col-span-2 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs" data-i18n="form-btn">Transmit Data</button>
+                </form>
             </div>
-            <div class="h-10 w-[1px] bg-white/10 hidden md:block"></div>
-            <div class="text-center">
-                <span class="text-2xl md:text-3xl font-black font-[Unbounded] text-white">30+</span>
-                <p class="text-[9px] uppercase tracking-widest text-gray-500 mt-1" data-i18n="stat-clients">Happy Clients</p>
-            </div>
-            <div class="h-10 w-[1px] bg-white/10 hidden md:block"></div>
-            <div class="text-center">
-                <span class="text-2xl md:text-3xl font-black font-[Unbounded] text-white">3+</span>
-                <p class="text-[9px] uppercase tracking-widest text-gray-500 mt-1" data-i18n="stat-years">Years of Experience</p>
-            </div>
         </div>
-
-        <a href="pricing.html" class="cta-purple px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 active:scale-95" data-aos="fade-up" data-aos-delay="500" data-i18n="hero-btn">
-            Initialise Protocol
-        </a>
     </section>
 
     <footer class="py-10 border-t border-white/5">

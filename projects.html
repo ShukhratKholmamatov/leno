@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LENO AGENCY | Projects</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Unbounded:wght@700;800;900&display=swap');
+        .lang-btn { cursor: pointer; transition: 0.3s; opacity: 0.5; }
+        .lang-active { opacity: 1; color: #8B5CF6; text-shadow: 0 0 10px #8B5CF6; font-weight: 900; }
+    </style>
+</head>
+<body class="bg-[#05010a] text-white overflow-x-hidden font-[Inter]">
+
+    <canvas id="canvas-bg" class="fixed inset-0 z-[-1] pointer-events-none"></canvas>
+
+    <!-- Floating Social Bar -->
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3">
+        <a href="https://t.me/lenouz" target="_blank" class="social-float group">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <span class="social-tooltip">Telegram</span>
+        </a>
+        <a href="https://www.instagram.com/leno.uz/" target="_blank" class="social-float group">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            <span class="social-tooltip">Instagram</span>
+        </a>
+        <div class="w-[1px] h-16 bg-purple-500/30 mx-auto"></div>
+    </div>
+
+    <div id="cursor" class="hidden md:block"></div>
+    <div id="cursor-blur" class="hidden md:block"></div>
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 p-2 glass rounded-full border border-purple-500/30" id="hud-nav">
+        <div class="flex border-r border-white/10 pr-2 mr-2">
+            <button onclick="changeLang('uz')" id="btn-uz" class="lang-btn px-2 text-[9px] lang-active">UZ</button>
+            <button onclick="changeLang('ru')" id="btn-ru" class="lang-btn px-2 text-[9px]">RU</button>
+            <button onclick="changeLang('en')" id="btn-en" class="lang-btn px-2 text-[9px]">EN</button>
+        </div>
+        <a href="index.html" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-core">Core</a>
+        <a href="projects.html" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-projects">Masterpieces</a>
+        <a href="pricing.html" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-tarifs">Tarifs</a>
+        <a href="contact.html" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2" data-i18n="nav-sync">Sync Now</a>
+    </nav>
+
+    <section id="projects" class="pt-32 pb-32 px-6 bg-[#08020d]">
+        <div class="max-w-7xl mx-auto mb-16 text-center">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-purple-500 mb-4" data-aos="fade-down" data-i18n="registry-title">Registry of Excellence</h2>
+            <h3 class="text-6xl font-black font-[Unbounded]" data-aos="fade-up" data-i18n="catalog-title">Project Catalog</h3>
+
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <button onclick="filterVault('web')" class="vault-btn active" data-i18n="vault-web">Websites</button>
+                <button onclick="filterVault('smm')" class="vault-btn" data-i18n="vault-smm">SMM / Instagram</button>
+                <button onclick="filterVault('media')" class="vault-btn" data-i18n="vault-media">Media / Logos / Cartoons</button>
+            </div>
+        </div>
+
+        <div id="vault-web" class="vault-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+            <div class="web-catalog-item group" data-aos="zoom-in-up">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://bristot-coffee.uz/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/bristot.png" alt="Bristot Coffee" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-1">E-Commerce / Website</span>
+                            <h4 class="text-xl font-bold font-[Unbounded]">BRISTOT COFFEE</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Unbounded]" data-i18n="web-title-1">Coffee Distribution</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-1">Website for Premium Coffe brand</p>
+                    </div>
+                    <a href="https://bristot-coffee.uz/" class="view-link" data-i18n="view-project">View Project →</a>
+                </div>
+            </div>
+
+            <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://aileaders.uz/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/aileaders.png" alt="AI Leaders" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-2">Next.js / AI Integration</span>
+                            <h4 class="text-xl font-bold font-[Unbounded]">AI LEADERS</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Unbounded]" data-i18n="web-title-2">Tech Community</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-2">Website for Ministry of Information Technologies</p>
+                    </div>
+                    <a href="https://aileaders.uz/" class="view-link" data-i18n="view-project">View Project →</a>
+                </div>
+            </div>
+
+            <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://zoomlionuzbekistan.net/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/zoomlionuzbekistan.png" alt="Creative Web" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-3">Website / Branding</span>
+                            <h4 class="text-xl font-bold font-[Unbounded]">Zoomlion</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Unbounded]" data-i18n="web-title-3">Truck sellers</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-3">Website for International Truck Seller</p>
+                    </div>
+                    <a href="https://zoomlionuzbekistan.net/" class="view-link" data-i18n="view-project">View Project →</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="vault-smm" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-purple-500/20 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/20">
+                        <img src="/assets/Actiwe logo.pngs.png" alt="Client Logo" class="w-full h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">Actiwe.uz</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">SMM + BRANDING</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 italic" data-i18n="smm-story-1">
+                    "After we executed a comprehensive SMM strategy and refined their digital identity, our client successfully secured a massive contract with **PIIMA**..."
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full border border-purple-500/30" data-i18n="badge-prestige">PRESTIGE DEAL</span>
+                    <span class="text-[9px] bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30 text-green-400" data-i18n="badge-success">SUCCESSFUL EXCEPTION</span>
+                </div>
+            </div>
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-purple-500/20 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/20">
+                        <img src="/assets/7echka.png" alt="Client Logo" class="w-full h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">7echka</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">SMM + BRANDING</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6 italic" data-i18n="smm-story-2">
+                    After developing a strong brand identity and executing a targeted PR strategy, we positioned the company as a recognizable name...
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full border border-purple-500/30" data-i18n="badge-prestige">PRESTIGE DEAL</span>
+                    <span class="text-[9px] bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30 text-green-400" data-i18n="badge-success">SUCCESSFUL EXCEPTION</span>
+                </div>
+            </div>
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/Artboard 20 copy@4x (1).png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">NEOS</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">CONTENT STRATEGY</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6" data-i18n="smm-story-3">
+                    By implementing a results-focused social media marketing strategy...
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-furniture">Furniture Company</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-branding">Brand Identity</span>
+                </div>
+            </div>
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/eduventure logo.png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">Eduventure</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">REBRANDING SUCCESS</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6" data-i18n="smm-story-4">
+                    Through a data-driven marketing funnel...
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-education">Education</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-students">Students</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="vault-media" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/biotime.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-2 py-1 rounded text-[8px] uppercase tracking-widest">Preview_Mode</div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Biotime</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-1">Chemists' shop</p>
+                </div>
+            </div>
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/cartoon.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Olmoxon</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-2">Cartoon</p>
+                </div>
+            </div>
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/A0001-0390.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Evelom</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-3">Cosmetics</p>
+                </div>
+            </div>
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/artitude.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">ATTO</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-4">Public Transport</p>
+                </div>
+            </div>
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/ATTO.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Artitude</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-5">Cosmetics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-white/5">
+        <div class="flex flex-col items-center gap-4">
+            <div class="flex gap-4">
+                <a href="https://t.me/lenouz" target="_blank" class="footer-social">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/leno.uz/" target="_blank" class="footer-social">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+            </div>
+            <p class="text-[10px] text-gray-600 uppercase tracking-widest">© 2026 LENO AGENCY — SYNCED & SECURED</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

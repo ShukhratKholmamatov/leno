@@ -95,12 +95,13 @@ const langData = {
 // --- Multi-Language Logic ---
 function changeLang(lang) {
     document.documentElement.lang = lang;
-    
+    localStorage.setItem('leno-lang', lang);
+
     // Update simple text
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if(langData[lang][key]) {
-            el.innerHTML = langData[lang][key]; // innerHTML allows <li> inside lists
+            el.innerHTML = langData[lang][key];
         }
     });
 
@@ -117,11 +118,11 @@ function changeLang(lang) {
     const activeBtn = document.getElementById(`btn-${lang}`);
     if(activeBtn) activeBtn.classList.add('lang-active');
 
-    AOS.refresh();
+    if (typeof AOS !== 'undefined') AOS.refresh();
 }
 
 // --- Original Logic ---
-AOS.init();
+if (typeof AOS !== 'undefined') AOS.init();
 
 function toggleTheme() {
     const html = document.documentElement;
@@ -133,39 +134,41 @@ function toggleTheme() {
 
 // Particle Background
 const canvas = document.getElementById('canvas-bg');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-let particles = [];
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
+    let particles = [];
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+        }
+        draw() {
+            ctx.fillStyle = "rgba(139, 92, 246, 0.4)";
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
     }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+
+    for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
     }
-    draw() {
-        ctx.fillStyle = "rgba(139, 92, 246, 0.4)";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
+    animate();
 }
-
-for (let i = 0; i < 100; i++) particles.push(new Particle());
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    requestAnimationFrame(animate);
-}
-animate();
 
 // Custom Cursor
 const cursor = document.getElementById('cursor');
@@ -174,7 +177,7 @@ const cursorBlur = document.getElementById('cursor-blur');
 document.addEventListener('mousemove', (e) => {
     if(cursor) cursor.style.left = e.clientX + 'px';
     if(cursor) cursor.style.top = e.clientY + 'px';
-    
+
     if(cursorBlur) {
         cursorBlur.animate({
             left: `${e.clientX - 100}px`,
@@ -200,6 +203,7 @@ document.querySelectorAll('.glass-card, .web-catalog-item, .smm-story-card').for
     });
 });
 
+// Vault filter (projects page)
 function filterVault(category) {
     document.querySelectorAll('.vault-content').forEach(vault => {
         vault.classList.add('hidden');
@@ -207,40 +211,30 @@ function filterVault(category) {
     document.querySelectorAll('.vault-btn').forEach(btn => {
         btn.classList.remove('active', 'bg-purple-600');
     });
-    document.getElementById('vault-' + category).classList.remove('hidden');
-    event.currentTarget.classList.add('active', 'bg-purple-600');
-    
+    const target = document.getElementById('vault-' + category);
+    if (target) target.classList.remove('hidden');
+    if (event && event.currentTarget) event.currentTarget.classList.add('active', 'bg-purple-600');
+
     if(category === 'media') {
         initVideoPreviews();
     }
-    AOS.refresh();
+    if (typeof AOS !== 'undefined') AOS.refresh();
 }
 
 function initVideoPreviews() {
     const videos = document.querySelectorAll('.preview-video');
     videos.forEach(video => {
         video.play();
-        // Reset loop every 10 seconds (as per your code)
         setInterval(() => {
             video.currentTime = 0;
             video.play();
-        }, 10000); 
+        }, 10000);
     });
 }
 
-// Choose Tarif & Scroll to Form
+// Choose Tarif — redirect to contact page with param
 function chooseTarif(value) {
-    // Auto-check SMM and show tariff section
-    const smmCb = document.querySelector('input[name="services"][value="SMM"]');
-    if (smmCb && !smmCb.checked) {
-        smmCb.checked = true;
-        smmCb.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-    const select = document.getElementById('tarif-select');
-    if (select) {
-        select.value = value;
-    }
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    window.location.href = 'contact.html?tarif=' + encodeURIComponent(value);
 }
 
 // Telegram Bot Form Submission
@@ -282,6 +276,9 @@ function sendToTelegram(e) {
             btn.textContent = '✓';
             btn.style.background = '#22c55e';
             document.getElementById('contact-form').reset();
+            // Hide tariff wrapper after reset
+            const tw = document.getElementById('tarif-wrapper');
+            if (tw) tw.style.display = 'none';
             setTimeout(() => {
                 btn.textContent = '';
                 btn.style.background = '';
@@ -313,39 +310,66 @@ function sendToTelegram(e) {
 
 // Initialize on Load
 document.addEventListener('DOMContentLoaded', () => {
-    initVideoPreviews();
-    changeLang('uz'); // Default language
-    document.getElementById('contact-form').addEventListener('submit', sendToTelegram);
+    // Restore language from localStorage
+    const savedLang = localStorage.getItem('leno-lang') || 'uz';
+    changeLang(savedLang);
 
-    // Limit service selection to max 2 + show tariff only when SMM is selected
-    const MAX_SERVICES = 2;
-    const tarifWrapper = document.getElementById('tarif-wrapper');
-    const tarifSelect = document.getElementById('tarif-select');
+    // Init videos if on projects page
+    if (document.getElementById('vault-media')) {
+        initVideoPreviews();
+    }
 
-    document.querySelectorAll('input[name="services"]').forEach(cb => {
-        cb.addEventListener('change', () => {
-            const checked = document.querySelectorAll('input[name="services"]:checked');
+    // Contact form logic (only on contact page)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', sendToTelegram);
 
-            // Max 2 limit
-            document.querySelectorAll('input[name="services"]').forEach(el => {
-                const chip = el.closest('.service-chip');
-                if (!el.checked && checked.length >= MAX_SERVICES) {
-                    chip.classList.add('disabled');
+        // Limit service selection to max 2 + show tariff only when SMM is selected
+        const MAX_SERVICES = 2;
+        const tarifWrapper = document.getElementById('tarif-wrapper');
+        const tarifSelect = document.getElementById('tarif-select');
+
+        document.querySelectorAll('input[name="services"]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const checked = document.querySelectorAll('input[name="services"]:checked');
+
+                // Max 2 limit
+                document.querySelectorAll('input[name="services"]').forEach(el => {
+                    const chip = el.closest('.service-chip');
+                    if (!el.checked && checked.length >= MAX_SERVICES) {
+                        chip.classList.add('disabled');
+                    } else {
+                        chip.classList.remove('disabled');
+                    }
+                });
+
+                // Show tariff section only when SMM is checked
+                const smmChecked = document.querySelector('input[name="services"][value="SMM"]').checked;
+                if (smmChecked) {
+                    tarifWrapper.style.display = '';
+                    tarifSelect.required = true;
                 } else {
-                    chip.classList.remove('disabled');
+                    tarifWrapper.style.display = 'none';
+                    tarifSelect.value = '';
+                    tarifSelect.required = false;
                 }
             });
-
-            // Show tariff section only when SMM is checked
-            const smmChecked = document.querySelector('input[name="services"][value="SMM"]').checked;
-            if (smmChecked) {
-                tarifWrapper.style.display = '';
-                tarifSelect.required = true;
-            } else {
-                tarifWrapper.style.display = 'none';
-                tarifSelect.value = '';
-                tarifSelect.required = false;
-            }
         });
-    });
+
+        // Handle ?tarif= URL param (coming from pricing page)
+        const urlParams = new URLSearchParams(window.location.search);
+        const tarifParam = urlParams.get('tarif');
+        if (tarifParam) {
+            // Auto-check SMM and show tariff section
+            const smmCb = document.querySelector('input[name="services"][value="SMM"]');
+            if (smmCb && !smmCb.checked) {
+                smmCb.checked = true;
+                smmCb.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            const select = document.getElementById('tarif-select');
+            if (select) {
+                select.value = tarifParam;
+            }
+        }
+    }
 });

@@ -430,26 +430,90 @@ body {
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
 }
 
-/* Gallery */
-.gallery-item {
-    position: relative;
+/* Marquee Gallery */
+.marquee-row {
+    width: 100%;
     overflow: hidden;
-    border-radius: 1rem;
-    border: 1px solid rgba(255,255,255,0.05);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+}
+
+.marquee-left {
+    animation: marquee-scroll-left 30s linear infinite;
+}
+
+.marquee-right {
+    animation: marquee-scroll-right 30s linear infinite;
+}
+
+.marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.marquee-img {
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+    border-radius: 0;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-image:
+        linear-gradient(#08020d, #08020d),
+        conic-gradient(from var(--border-angle, 0deg), transparent 30%, #fff 50%, #8B5CF6 55%, transparent 70%);
+    animation: border-spin 4s linear infinite;
     transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
 }
 
-.gallery-item img {
+@property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes border-spin {
+    0% { --border-angle: 0deg; }
+    100% { --border-angle: 360deg; }
+}
+
+.marquee-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
-    filter: grayscale(0.4) brightness(0.8);
+    filter: brightness(0.65) contrast(1.1) saturate(0.6) sepia(0.3) hue-rotate(220deg);
 }
 
-.gallery-item:hover img {
-    transform: scale(1.08);
-    filter: grayscale(0) brightness(1);
+.marquee-img:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.35), 0 0 60px rgba(139, 92, 246, 0.1);
 }
 
-.gallery-item:hover {
-    border-color: #8B5CF6;
-    box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+.marquee-img:hover img {
+    filter: brightness(0.9) contrast(1.05) saturate(0.8) sepia(0.15) hue-rotate(220deg);
+}
+
+@media (max-width: 768px) {
+    .marquee-img {
+        width: 250px;
+        height: 250px;
+    }
 }

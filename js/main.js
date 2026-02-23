@@ -31,7 +31,8 @@ const langData = {
         "label-name": "Ismingiz", "label-email": "Email", "label-type": "Tarifni tanlang", "label-msg": "Xabaringiz",
         "ph-name": "To'liq Ismingiz", "ph-email": "Email manzilingiz", "opt-1": "Tarifni tanlang", "ph-msg": "Loyiha haqida yozing...", "form-btn": "Yuborish",
         "label-services": "Xizmat turi", "svc-consult": "Konsultatsiya olish", "svc-branding": "Branding", "svc-smm": "SMM", "svc-logo": "Logo", "svc-website": "Veb-sayt",
-        "gallery-sub": "Bizning Ishlarimiz", "gallery-title": "Galereya"
+        "gallery-sub": "Bizning Ishlarimiz", "gallery-title": "Galereya",
+        "gallery-more": "Ko'proq ko'rish", "gallery-less": "Yopish"
     },
     ru: {
         "nav-core": "ГЛАВНАЯ", "nav-projects": "ПРОЕКТЫ", "nav-tarifs": "ТАРИФЫ", "nav-sync": "СВЯЗАТЬСЯ",
@@ -64,7 +65,8 @@ const langData = {
         "label-name": "Ваше имя", "label-email": "Email", "label-type": "Выберите тариф", "label-msg": "Сообщение",
         "ph-name": "Ваше Имя", "ph-email": "Ваш Email", "opt-1": "Выберите тариф", "ph-msg": "Напишите о проекте...", "form-btn": "Отправить",
         "label-services": "Тип услуги", "svc-consult": "Консультация", "svc-branding": "Брендинг", "svc-smm": "SMM", "svc-logo": "Логотип", "svc-website": "Веб-сайт",
-        "gallery-sub": "Наши Работы", "gallery-title": "Галерея"
+        "gallery-sub": "Наши Работы", "gallery-title": "Галерея",
+        "gallery-more": "Показать ещё", "gallery-less": "Скрыть"
     },
     en: {
         "nav-core": "HOME", "nav-projects": "PROJECTS", "nav-tarifs": "PRICING", "nav-sync": "CONTACT US",
@@ -97,7 +99,8 @@ const langData = {
         "label-name": "Your Name", "label-email": "Email", "label-type": "Choose Plan", "label-msg": "Your Message",
         "ph-name": "Full Name", "ph-email": "Email Address", "opt-1": "Select a plan", "ph-msg": "Tell us about your project...", "form-btn": "SEND MESSAGE",
         "label-services": "Service Type", "svc-consult": "Consultation", "svc-branding": "Branding", "svc-smm": "SMM", "svc-logo": "Logo", "svc-website": "Website",
-        "gallery-sub": "Our Work", "gallery-title": "Gallery"
+        "gallery-sub": "Our Work", "gallery-title": "Gallery",
+        "gallery-more": "Show More", "gallery-less": "Show Less"
     }
 };
 
@@ -212,7 +215,7 @@ document.querySelectorAll('.glass-card, .web-catalog-item, .smm-story-card').for
     });
 });
 
-// Vault filter (projects page)
+// Vault filter (projects)
 function filterVault(category) {
     document.querySelectorAll('.vault-content').forEach(vault => {
         vault.classList.add('hidden');
@@ -241,9 +244,25 @@ function initVideoPreviews() {
     });
 }
 
-// Choose Tarif — redirect to contact page with param
+// Choose Tarif — scroll to contact form and auto-select
 function chooseTarif(value) {
-    window.location.href = 'contact.html?tarif=' + encodeURIComponent(value);
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Auto-check SMM and show tariff section
+    const smmCb = document.querySelector('input[name="services"][value="SMM"]');
+    if (smmCb && !smmCb.checked) {
+        smmCb.checked = true;
+        smmCb.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // Set tariff value
+    const select = document.getElementById('tarif-select');
+    if (select) {
+        select.value = value;
+    }
 }
 
 // Telegram Bot Form Submission
@@ -323,12 +342,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('leno-lang') || 'uz';
     changeLang(savedLang);
 
-    // Init videos if on projects page
-    if (document.getElementById('vault-media')) {
-        initVideoPreviews();
-    }
+    // Init videos
+    initVideoPreviews();
 
-    // Contact form logic (only on contact page)
+    // Contact form logic
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', sendToTelegram);
@@ -364,21 +381,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        // Handle ?tarif= URL param (coming from pricing page)
-        const urlParams = new URLSearchParams(window.location.search);
-        const tarifParam = urlParams.get('tarif');
-        if (tarifParam) {
-            // Auto-check SMM and show tariff section
-            const smmCb = document.querySelector('input[name="services"][value="SMM"]');
-            if (smmCb && !smmCb.checked) {
-                smmCb.checked = true;
-                smmCb.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-            const select = document.getElementById('tarif-select');
-            if (select) {
-                select.value = tarifParam;
-            }
-        }
     }
 });

@@ -41,12 +41,13 @@
             <button onclick="changeLang('ru')" id="btn-ru" class="lang-btn px-2 text-[9px]">RU</button>
             <button onclick="changeLang('en')" id="btn-en" class="lang-btn px-2 text-[9px]">EN</button>
         </div>
-        <a href="index.html" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-core">Core</a>
-        <a href="projects.html" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-projects">Masterpieces</a>
-        <a href="pricing.html" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-tarifs">Tarifs</a>
-        <a href="contact.html" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2" data-i18n="nav-sync">Sync Now</a>
+        <a href="#home" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-core">Core</a>
+        <a href="#projects" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-projects">Masterpieces</a>
+        <a href="#pricing" class="nav-item px-4 py-2 text-[10px] uppercase tracking-widest hover:text-purple-400" data-i18n="nav-tarifs">Tarifs</a>
+        <a href="#contact" class="nav-item px-6 py-2 text-[10px] uppercase tracking-widest bg-purple-600 rounded-full font-bold ml-2" data-i18n="nav-sync">Sync Now</a>
     </nav>
 
+    <!-- HERO -->
     <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
 
@@ -78,112 +79,410 @@
             </div>
         </div>
 
-        <a href="pricing.html" class="cta-purple px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 active:scale-95" data-aos="fade-up" data-aos-delay="500" data-i18n="hero-btn">
+        <a href="#pricing" class="cta-purple px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 active:scale-95" data-aos="fade-up" data-aos-delay="500" data-i18n="hero-btn">
             Initialise Protocol
         </a>
     </section>
 
-    <section class="py-24 px-6 bg-[#08020d]">
-        <div class="max-w-7xl mx-auto text-center mb-16">
+    <!-- GALLERY -->
+    <section class="py-24 bg-[#08020d] overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center mb-16 px-6">
             <h2 class="text-xs uppercase tracking-[0.5em] text-purple-500 mb-4" data-aos="fade-down" data-i18n="gallery-sub">Bizning Ishlarimiz</h2>
             <h3 class="text-5xl font-black font-[Unbounded]" data-aos="fade-up" data-i18n="gallery-title">Galereya</h3>
         </div>
-        <div class="columns-2 md:columns-3 lg:columns-4 gap-4 max-w-7xl mx-auto" data-aos="fade-up">
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/LENO1.jpg" alt="LENO Work" class="w-full rounded-2xl">
+
+        <div class="marquee-row" data-aos="fade-up">
+            <div class="marquee-track marquee-left">
+                <div class="marquee-img"><img src="/assets/IMG_7649.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7668.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7669.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7670.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7671.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7672.JPG" alt="LENO Work"></div>
+                <!-- duplicate for seamless loop -->
+                <div class="marquee-img"><img src="/assets/IMG_7649.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7668.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7669.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7670.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7671.JPG" alt="LENO Work"></div>
+                <div class="marquee-img"><img src="/assets/IMG_7672.JPG" alt="LENO Work"></div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/ava (2).png" alt="Design Work" class="w-full rounded-2xl">
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="pt-32 pb-32 px-6 bg-[#08020d]">
+        <div class="max-w-7xl mx-auto mb-16 text-center">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-purple-500 mb-4" data-aos="fade-down" data-i18n="registry-title">Registry of Excellence</h2>
+            <h3 class="text-6xl font-black font-[Unbounded]" data-aos="fade-up" data-i18n="catalog-title">Project Catalog</h3>
+
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <button onclick="filterVault('web')" class="vault-btn active" data-i18n="vault-web">Websites</button>
+                <button onclick="filterVault('smm')" class="vault-btn" data-i18n="vault-smm">SMM / Instagram</button>
+                <button onclick="filterVault('media')" class="vault-btn" data-i18n="vault-media">Media / Logos / Cartoons</button>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 1 (4).png" alt="Design Work" class="w-full rounded-2xl">
+        </div>
+
+        <div id="vault-web" class="vault-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+            <div class="web-catalog-item group" data-aos="zoom-in-up">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://bristot-coffee.uz/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/bristot.png" alt="Bristot Coffee" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-1">E-Commerce / Website</span>
+                            <h4 class="text-xl font-bold font-[Unbounded]">BRISTOT COFFEE</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Unbounded]" data-i18n="web-title-1">Coffee Distribution</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-1">Website for Premium Coffe brand</p>
+                    </div>
+                    <a href="https://bristot-coffee.uz/" class="view-link" data-i18n="view-project">View Project →</a>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/LENO2.jpg" alt="LENO Work" class="w-full rounded-2xl">
+
+            <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://aileaders.uz/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/aileaders.png" alt="AI Leaders" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-2">Next.js / AI Integration</span>
+                            <h4 class="text-xl font-bold font-[Unbounded]">AI LEADERS</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Unbounded]" data-i18n="web-title-2">Tech Community</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-2">Website for Ministry of Information Technologies</p>
+                    </div>
+                    <a href="https://aileaders.uz/" class="view-link" data-i18n="view-project">View Project →</a>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/avanew (2).jpg" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="web-catalog-item group" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <div class="url-bar text-[10px] text-gray-500">https://zoomlionuzbekistan.net/</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="/assets/zoomlionuzbekistan.png" alt="Creative Web" class="scrolling-img">
+                        <div class="overlay-info">
+                            <span class="tech-tag" data-i18n="web-tag-3">Website / Branding</span>
+                            <h4 class="text-xl font-bold font-[Unbounded]">Zoomlion</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h5 class="text-lg font-bold font-[Unbounded]" data-i18n="web-title-3">Truck sellers</h5>
+                        <p class="text-xs text-gray-500" data-i18n="web-desc-3">Website for International Truck Seller</p>
+                    </div>
+                    <a href="https://zoomlionuzbekistan.net/" class="view-link" data-i18n="view-project">View Project →</a>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 1 (5).png" alt="Design Work" class="w-full rounded-2xl">
+        </div>
+
+        <div id="vault-smm" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-purple-500/20 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/20">
+                        <img src="/assets/Actiwe logo.pngs.png" alt="Client Logo" class="w-full h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">Actiwe.uz</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">SMM + BRANDING</p>
+                    </div>
+                </div>
+                <ul class="text-gray-300 text-sm leading-relaxed mb-6 space-y-2 list-none" data-i18n="smm-story-1">
+                    <li>• 0 tizimlashtirilgan muvaffaqiyatli kiyim brendi</li>
+                    <li>• Professional brending yondashuvi</li>
+                    <li>• 70+ uniforma — kompaniyalar va ta'lim muassasalari bilan hamkorlik</li>
+                </ul>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full border border-purple-500/30" data-i18n="badge-prestige">UNIFORM BREND</span>
+                    <span class="text-[9px] bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30 text-green-400" data-i18n="badge-success">70+ UNIFORMA</span>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/awa (2).jpg" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-purple-500/20 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center border border-white/20">
+                        <img src="/assets/7echka.png" alt="Client Logo" class="w-full h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">7echka</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">BRANDING + PR</p>
+                    </div>
+                </div>
+                <ul class="text-gray-300 text-sm leading-relaxed mb-6 space-y-2 list-none" data-i18n="smm-story-2">
+                    <li>• Brend tanilishi va PR strategiyasi</li>
+                    <li>• Professional media va dizayn xizmatlari</li>
+                    <li>• O'zbekiston bo'ylab distribyutor hamkorlar</li>
+                </ul>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full border border-purple-500/30" data-i18n="badge-prestige">PR STRATEGIYA</span>
+                    <span class="text-[9px] bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30 text-green-400" data-i18n="badge-success">DISTRIBYUTSIYA</span>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 (4).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/Artboard 20 copy@4x (1).png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">NEOS</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">SMM + CRM</p>
+                    </div>
+                </div>
+                <ul class="text-gray-300 text-sm leading-relaxed mb-6 space-y-2 list-none" data-i18n="smm-story-3">
+                    <li>• Brend identifikatsiyasi va Piar tizimi</li>
+                    <li>• SMM va marketing bo'yicha strukturaviy yondashuv</li>
+                    <li>• Mijozlar bazasi va CRM tizimi</li>
+                </ul>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-furniture">Mebel Kompaniyasi</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-branding">CRM Tizimi</span>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/ice1 (2).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/eduventure logo.png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter">Eduventure</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">LEAD GENERATION</p>
+                    </div>
+                </div>
+                <ul class="text-gray-300 text-sm leading-relaxed mb-6 space-y-2 list-none" data-i18n="smm-story-4">
+                    <li>• Barqaror va kuchli lead generatsiya tizimi</li>
+                    <li>• Oyiga 10+ xizmatdan foydalanuvchi faol mijozlar</li>
+                    <li>• Yuqori samarali marketing tizimi</li>
+                </ul>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-education">Ta'lim</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-students">10+ Oylik Mijoz</span>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 (5).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="smm-story-card glass p-8 rounded-[2.5rem] border border-white/5 hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-white/10 p-2 flex items-center justify-center">
+                        <img src="/assets/logo_png.png" alt="Client Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="font-bold font-[Unbounded] uppercase tracking-tighter text-sm">Al-Xorazmiy</h4>
+                        <p class="text-[10px] text-purple-400 font-mono tracking-widest">MEDIA + PR</p>
+                    </div>
+                </div>
+                <ul class="text-gray-300 text-sm leading-relaxed mb-6 space-y-2 list-none" data-i18n="smm-story-5">
+                    <li>• Professional foto/media yondashuv</li>
+                    <li>• Strategik yuritilgan ijtimoiy tarmoqlar tizimi</li>
+                    <li>• Piar tizimi</li>
+                </ul>
+                <div class="flex gap-2">
+                    <span class="text-[9px] bg-purple-600/20 px-3 py-1 rounded-full" data-i18n="tag-school">Maktab</span>
+                    <span class="text-[9px] bg-white/10 px-3 py-1 rounded-full" data-i18n="tag-media">Media + PR</span>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/ice-main (2).png" alt="Design Work" class="w-full rounded-2xl">
+        </div>
+
+        <div id="vault-media" class="vault-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/biotime.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur px-2 py-1 rounded text-[8px] uppercase tracking-widest">Preview_Mode</div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Biotime</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-1">Chemists' shop</p>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 (6).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/cartoon.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Olmoxon</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-2">Cartoon</p>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-2.1.1 (2).png" alt="Logo Design" class="w-full rounded-2xl">
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/A0001-0390.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Evelom</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-3">Cosmetics</p>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия (4).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/artitude.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">ATTO</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-4">Public Transport</p>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-2.1.2 (2).png" alt="Logo Design" class="w-full rounded-2xl">
+
+            <div class="media-card glass rounded-3xl overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                <div class="video-container relative h-64 overflow-hidden">
+                    <video class="preview-video w-full h-full object-cover" muted playsinline loop>
+                        <source src="assets/ATTO.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-purple-900/20 group-hover:bg-transparent transition-all"></div>
+                </div>
+                <div class="p-6">
+                    <h5 class="font-bold font-[Unbounded] text-lg uppercase">Artitude</h5>
+                    <p class="text-[10px] text-purple-400 font-mono mt-1" data-i18n="media-type-5">Cosmetics</p>
+                </div>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия (5).png" alt="Design Work" class="w-full rounded-2xl">
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-center text-[10px] uppercase tracking-[0.5em] text-purple-500 mb-4" data-i18n="pricing-mod">Investment Modules</h2>
+        <h3 class="text-5xl font-black text-center mb-16 font-[Unbounded]" data-i18n="pricing-title">Acquisition Tarifs</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="tarif-card" data-aos="fade-up">
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t1-name">Ekonom</h3>
+                <div class="price">$299</div>
+                <ul class="text-xs space-y-3" data-i18n="t1-list">
+                    <li>2 creative assets</li>
+                    <li>1 shooting day</li>
+                    <li>4 Reels / 8 Posts</li>
+                    <li>15 stories</li>
+                </ul>
+                <button class="buy-btn mt-6" onclick="chooseTarif('econom')" data-i18n="btn-init">Choose Plan</button>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-2.2.1 (2).png" alt="Logo Design" class="w-full rounded-2xl">
+
+            <div class="tarif-card border-purple-500/40" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t2-name">Online</h3>
+                <div class="price">$399</div>
+                <ul class="text-xs space-y-3" data-i18n="t2-list">
+                    <li>Online management</li>
+                    <li>2 creative assets</li>
+                    <li>6-8 Reels / 10 posts</li>
+                    <li>20 stories</li>
+                </ul>
+                <button class="buy-btn mt-6" onclick="chooseTarif('online')" data-i18n="btn-init">Choose Plan</button>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия (6).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="tarif-card featured" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 px-3 py-1 rounded-full text-[8px] font-bold uppercase" data-i18n="optimal">Best Value</div>
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t3-name">Standart</h3>
+                <div class="price">$599</div>
+                <ul class="text-xs space-y-3" data-i18n="t3-list">
+                    <li>8 reels / 12 posts</li>
+                    <li>20+ stories</li>
+                    <li>2 shooting days</li>
+                    <li>4 creative assets</li>
+                </ul>
+                <button class="buy-btn-gold mt-6" onclick="chooseTarif('standart')" data-i18n="btn-init">Choose Plan</button>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-2.2.2 (2).png" alt="Logo Design" class="w-full rounded-2xl">
+
+            <div class="tarif-card" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="font-bold uppercase tracking-tighter" data-i18n="t4-name">Premium</h3>
+                <div class="price">$799</div>
+                <ul class="text-xs space-y-3" data-i18n="t4-list">
+                    <li>12 reels / 15 posts</li>
+                    <li>4 shooting days</li>
+                    <li>6 creative assets</li>
+                    <li>Full Analytics</li>
+                </ul>
+                <button class="buy-btn mt-6" onclick="chooseTarif('premium')" data-i18n="btn-init">Choose Plan</button>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия 2 (3).png" alt="Design Work" class="w-full rounded-2xl">
+
+            <div class="tarif-card vip" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="font-bold uppercase tracking-tighter text-yellow-500" data-i18n="t5-name">VIP</h3>
+                <div class="price text-white">$999</div>
+                <ul class="text-xs space-y-3" data-i18n="t5-list">
+                    <li class="text-purple-400 font-bold">Full IT Website</li>
+                    <li class="text-purple-400 font-bold">Logo Branding</li>
+                    <li>Unlimited Reels</li>
+                    <li>Unlimited Posts</li>
+                </ul>
+                <button class="buy-btn-vip mt-6" onclick="chooseTarif('vip')" data-i18n="btn-init">Choose Plan</button>
             </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-oq2 (2).png" alt="Logo Design" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия 2 (4).png" alt="Design Work" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-yashil (2).png" alt="Logo Design" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия 3 (2).png" alt="Design Work" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/logo-yashil2 (2).png" alt="Logo Design" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия 4 (2).png" alt="Design Work" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/loho-oq (2).png" alt="Logo Design" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия 5 (2).png" alt="Design Work" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/premier-logo (2).png" alt="Logo Design" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/Монтажная область 2 копия 6 (2).png" alt="Design Work" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/tradium (2).png" alt="Design Work" class="w-full rounded-2xl">
-            </div>
-            <div class="gallery-item mb-4 break-inside-avoid">
-                <img src="/assets/leno profile.png" alt="LENO Profile" class="w-full rounded-2xl">
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="pt-32 pb-24 px-6 bg-gradient-to-b from-transparent to-[#0a0515]">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-form p-12 rounded-[3rem] border border-white/5" data-aos="zoom-in-up">
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl font-black font-[Unbounded]" data-i18n="form-title">Establish Connection</h2>
+                    <p class="text-gray-500 text-sm mt-2 font-light" data-i18n="form-sub">Enter your parameters to begin the consultation phase.</p>
+                </div>
+                <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-name">Identity</label>
+                        <input id="form-name" type="text" placeholder="Full Name" class="input-field w-full" data-i18n-ph="ph-name" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-email">Comm_Link</label>
+                        <input id="form-email" type="email" placeholder="Email Address" class="input-field w-full" data-i18n-ph="ph-email" required>
+                    </div>
+                    <div class="md:col-span-2 space-y-3">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-services">Xizmat turi</label>
+                        <div class="flex flex-wrap gap-3" id="services-group">
+                            <label class="service-chip"><input type="checkbox" name="services" value="Konsultatsiya"> <span data-i18n="svc-consult">Konsultatsiya olish</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="Branding"> <span data-i18n="svc-branding">Branding</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="SMM"> <span data-i18n="svc-smm">SMM</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="Logo"> <span data-i18n="svc-logo">Logo</span></label>
+                            <label class="service-chip"><input type="checkbox" name="services" value="Website"> <span data-i18n="svc-website">Website</span></label>
+                        </div>
+                    </div>
+                    <div id="tarif-wrapper" class="md:col-span-2 space-y-2" style="display:none;">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-type">Mission_Type</label>
+                        <select id="tarif-select" class="input-field w-full appearance-none">
+                            <option value="" data-i18n="opt-1">Select a plan</option>
+                            <option value="econom">Econom — $299</option>
+                            <option value="online">Online — $399</option>
+                            <option value="standart">Standart — $599</option>
+                            <option value="premium">Premium — $799</option>
+                            <option value="vip">VIP — $999</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-500 ml-2" data-i18n="label-msg">Mission_Brief</label>
+                        <textarea id="form-msg" placeholder="Tell us about your project..." class="input-field w-full h-32" data-i18n-ph="ph-msg"></textarea>
+                    </div>
+                    <button id="form-submit-btn" type="submit" class="cta-purple w-full md:col-span-2 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-xs" data-i18n="form-btn">Transmit Data</button>
+                </form>
             </div>
         </div>
     </section>
@@ -199,7 +498,7 @@
                 </a>
             </div>
             <p class="text-[10px] text-gray-600 uppercase tracking-widest">© 2026 LENO AGENCY — SYNCED & SECURED</p>
-        </div>
+        </div>                                
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

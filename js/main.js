@@ -248,20 +248,18 @@ function initVideoPreviews() {
 function chooseTarif(value) {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
+        // Same page — scroll to contact and auto-select
         contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Auto-check SMM and show tariff section
-    const smmCb = document.querySelector('input[name="services"][value="SMM"]');
-    if (smmCb && !smmCb.checked) {
-        smmCb.checked = true;
-        smmCb.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-
-    // Set tariff value
-    const select = document.getElementById('tarif-select');
-    if (select) {
-        select.value = value;
+        const smmCb = document.querySelector('input[name="services"][value="SMM"]');
+        if (smmCb && !smmCb.checked) {
+            smmCb.checked = true;
+            smmCb.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        const select = document.getElementById('tarif-select');
+        if (select) select.value = value;
+    } else {
+        // Different page (pricing.html) — redirect to index.html with tarif param
+        window.location.href = 'index.html?tarif=' + value + '#contact';
     }
 }
 
@@ -344,6 +342,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Init videos
     initVideoPreviews();
+
+    // Handle tarif param from pricing page redirect
+    const urlParams = new URLSearchParams(window.location.search);
+    const tarifParam = urlParams.get('tarif');
+    if (tarifParam && document.getElementById('contact')) {
+        const smmCb = document.querySelector('input[name="services"][value="SMM"]');
+        if (smmCb && !smmCb.checked) {
+            smmCb.checked = true;
+            smmCb.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        setTimeout(() => {
+            const select = document.getElementById('tarif-select');
+            if (select) select.value = tarifParam;
+        }, 100);
+    }
 
     // Contact form logic
     const contactForm = document.getElementById('contact-form');

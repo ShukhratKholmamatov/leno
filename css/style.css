@@ -500,7 +500,7 @@ body {
     display: block;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
-    filter: brightness(0.65) contrast(1.1) saturate(0.6) sepia(0.3) hue-rotate(220deg);
+    filter: none;
 }
 
 .marquee-img:hover {
@@ -508,7 +508,7 @@ body {
 }
 
 .marquee-img:hover img {
-    filter: brightness(0.9) contrast(1.05) saturate(0.8) sepia(0.15) hue-rotate(220deg);
+    filter: none;
 }
 
 @media (max-width: 768px) {

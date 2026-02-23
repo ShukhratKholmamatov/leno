@@ -27,7 +27,8 @@ const langData = {
         "optimal": "Eng yaxshi", "btn-init": "Tanlash",
         "form-title": "Bog'lanish", "form-sub": "Ma'lumotlaringizni qoldiring, biz tez orada aloqaga chiqamiz.",
         "label-name": "Ismingiz", "label-email": "Email", "label-type": "Tarifni tanlang", "label-msg": "Xabaringiz",
-        "ph-name": "To'liq Ismingiz", "ph-email": "Email manzilingiz", "opt-1": "Tarifni tanlang", "ph-msg": "Loyiha haqida yozing...", "form-btn": "Yuborish"
+        "ph-name": "To'liq Ismingiz", "ph-email": "Email manzilingiz", "opt-1": "Tarifni tanlang", "ph-msg": "Loyiha haqida yozing...", "form-btn": "Yuborish",
+        "label-services": "Xizmat turi", "svc-consult": "Konsultatsiya olish", "svc-branding": "Branding", "svc-smm": "SMM", "svc-logo": "Logo", "svc-website": "Veb-sayt"
     },
     ru: {
         "nav-core": "ГЛАВНАЯ", "nav-projects": "ПРОЕКТЫ", "nav-tarifs": "ТАРИФЫ", "nav-sync": "СВЯЗАТЬСЯ",
@@ -56,7 +57,8 @@ const langData = {
         "optimal": "Лучший выбор", "btn-init": "Выбрать",
         "form-title": "Связаться с нами", "form-sub": "Оставьте свои данные и мы свяжемся с вами в ближайшее время.",
         "label-name": "Ваше имя", "label-email": "Email", "label-type": "Выберите тариф", "label-msg": "Сообщение",
-        "ph-name": "Ваше Имя", "ph-email": "Ваш Email", "opt-1": "Выберите тариф", "ph-msg": "Напишите о проекте...", "form-btn": "Отправить"
+        "ph-name": "Ваше Имя", "ph-email": "Ваш Email", "opt-1": "Выберите тариф", "ph-msg": "Напишите о проекте...", "form-btn": "Отправить",
+        "label-services": "Тип услуги", "svc-consult": "Консультация", "svc-branding": "Брендинг", "svc-smm": "SMM", "svc-logo": "Логотип", "svc-website": "Веб-сайт"
     },
     en: {
         "nav-core": "HOME", "nav-projects": "PROJECTS", "nav-tarifs": "PRICING", "nav-sync": "CONTACT US",
@@ -85,7 +87,8 @@ const langData = {
         "optimal": "Best Value", "btn-init": "Choose Plan",
         "form-title": "Get in Touch", "form-sub": "Fill in your details and we'll get back to you shortly.",
         "label-name": "Your Name", "label-email": "Email", "label-type": "Choose Plan", "label-msg": "Your Message",
-        "ph-name": "Full Name", "ph-email": "Email Address", "opt-1": "Select a plan", "ph-msg": "Tell us about your project...", "form-btn": "SEND MESSAGE"
+        "ph-name": "Full Name", "ph-email": "Email Address", "opt-1": "Select a plan", "ph-msg": "Tell us about your project...", "form-btn": "SEND MESSAGE",
+        "label-services": "Service Type", "svc-consult": "Consultation", "svc-branding": "Branding", "svc-smm": "SMM", "svc-logo": "Logo", "svc-website": "Website"
     }
 };
 
@@ -227,6 +230,12 @@ function initVideoPreviews() {
 
 // Choose Tarif & Scroll to Form
 function chooseTarif(value) {
+    // Auto-check SMM and show tariff section
+    const smmCb = document.querySelector('input[name="services"][value="SMM"]');
+    if (smmCb && !smmCb.checked) {
+        smmCb.checked = true;
+        smmCb.dispatchEvent(new Event('change', { bubbles: true }));
+    }
     const select = document.getElementById('tarif-select');
     if (select) {
         select.value = value;
@@ -248,9 +257,12 @@ function sendToTelegram(e) {
     const msg = document.getElementById('form-msg').value.trim();
     const btn = document.getElementById('form-submit-btn');
 
-    if (!name || !email || !tarif.value) return;
+    // Collect selected services
+    const services = [...document.querySelectorAll('input[name="services"]:checked')].map(cb => cb.nextElementSibling.textContent).join(', ');
 
-    const text = `📩 *New Lead from LENO Website*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n💼 *Plan:* ${tarifText}\n💬 *Message:* ${msg || '—'}`;
+    if (!name || !email) return;
+
+    const text = `📩 *New Lead from LENO Website*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n💼 *Plan:* ${tarifText}\n🛠 *Services:* ${services || '—'}\n💬 *Message:* ${msg || '—'}`;
 
     btn.disabled = true;
     btn.textContent = '...';
@@ -304,4 +316,36 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideoPreviews();
     changeLang('uz'); // Default language
     document.getElementById('contact-form').addEventListener('submit', sendToTelegram);
+
+    // Limit service selection to max 2 + show tariff only when SMM is selected
+    const MAX_SERVICES = 2;
+    const tarifWrapper = document.getElementById('tarif-wrapper');
+    const tarifSelect = document.getElementById('tarif-select');
+
+    document.querySelectorAll('input[name="services"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+            const checked = document.querySelectorAll('input[name="services"]:checked');
+
+            // Max 2 limit
+            document.querySelectorAll('input[name="services"]').forEach(el => {
+                const chip = el.closest('.service-chip');
+                if (!el.checked && checked.length >= MAX_SERVICES) {
+                    chip.classList.add('disabled');
+                } else {
+                    chip.classList.remove('disabled');
+                }
+            });
+
+            // Show tariff section only when SMM is checked
+            const smmChecked = document.querySelector('input[name="services"][value="SMM"]').checked;
+            if (smmChecked) {
+                tarifWrapper.style.display = '';
+                tarifSelect.required = true;
+            } else {
+                tarifWrapper.style.display = 'none';
+                tarifSelect.value = '';
+                tarifSelect.required = false;
+            }
+        });
+    });
 });
